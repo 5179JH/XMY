@@ -1,0 +1,945 @@
+{extend name="user/index" /}
+{block name="memberRight"}
+<link rel="stylesheet" href="__WXCSS__/base.css?var=123"/>
+<link rel="stylesheet" href="__WXCSS__/font-awesome.css"/>
+<link rel="stylesheet" href="__WXCSS__/iconfont.css">
+<link rel="stylesheet" href="__WXlay__/css/layui.css">
+<link rel="stylesheet" href="__WXCSS__/wxmenu.css?ver=190628">
+<style type="text/css">
+    body {background-color: #e7e8eb;}
+    .wkbf-preview-add{margin-top: 8px;width: 220px;height: 62px;line-height: 30px;}
+    .wkbf-preview-add p{float:left;padding:5px;width: 160px;}
+    .wkbf-preview-add img{float:right;width:60px;height: 60px;}
+
+    .voice_div{
+        width: 350px;
+        height: 90px;
+        border:  solid #E0E0E0 1px;
+        border-radius: 4px;
+        -moz-border-radius: 4px;
+        position:relative;
+    }
+    .voice_div .voice_div_img{
+        width: 90px;
+        height: 90px;
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        float:left;
+    }
+    .voice_div .voice_div_img img{
+        margin-top: 20px;
+        width: 50px;
+        height: 50px;
+    }
+    .voice_div .voice_div_right{
+        width: 246px;
+        height: 80px;
+        margin: 5px;
+        float:right;
+    }
+    .voice_div .voice_div_right .voice_div_title{
+        margin-top: 15px;
+        height: 35px;
+        font-size: 16px;
+        border-bottom: solid #E0E0E0 1px;
+    }
+    .voice_div .voice_div_right .voice_div_time{
+        height: 30px;
+    }
+    /*视频*/
+
+    .video_div{
+        width: 320px;
+        height: 270px;
+        padding: 10px;
+        border:  solid #E0E0E0 1px;
+        border-radius: 4px;
+        -moz-border-radius: 4px;
+    }
+    .video_div p{
+        width: 320px;
+        height: 25px;
+        text-align: left;
+        margin-left:10px;
+    }
+    .video_div p b{
+        font-size: 16px;
+        width: 320px;
+        height: 25px;
+        line-height: 25px;
+    }
+    .video_div .video_img img{
+        font-size: 16px;
+        width: 300px;
+        height: 190px;
+        padding-top: 15px;
+        line-height: 30px;
+    }
+    .video_div .video_time{width: 300px;height: 25px;line-height: 25px;margin-top: -25px;z-index: 500;}
+    .wx-menu-up-tips{position:absolute;top:140px;width:380px;left:-115px;color:#c0c0c0;font-size:14px;display:none;text-align:center;}
+    .wkzc-right-set-submenu:hover .wx-menu-up-tips{display:block;}
+
+    .emiges-Mean{
+            display: none;
+            box-shadow: 0px 0px 2px 1px rgba(221,221,221,0.5);
+            border:1px solid #ddd;
+            width: 356px;
+            position: absolute;
+            padding: 10px;
+            box-sizing: border-box;
+            background-color: #ffffff;
+        }
+        .emiges-Body{
+            width: 100%;
+            height: 100%;
+            border:1px solid #eee;
+        }
+        .emiges-Nav{
+            background: #eee;
+            height: 30px;
+            text-align: center;
+            position: relative;
+        }
+        .emiges-next{
+            float: right;
+            width: 32px;
+            height: 30px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-size: 12px;
+            color: #666;
+            line-height: 30px;
+            text-align: center;
+        }
+        .emiges-next div{
+            display: -webkit-box;
+            -webkit-box-pack:justify;
+            padding: 1px 2px;
+        }
+        .fa-angle-right,.fa-angle-left{
+            font-size: 18px;
+        }
+        .fa-angle-left:hover{
+            font-size: 18px;
+            cursor: pointer;
+            color: #1FB748;
+        }
+        .fa-angle-right:hover{
+            font-size: 18px;
+            cursor: pointer;
+            color: #1FB748;
+        }
+        .emiges-Ul{
+            width: 290px;
+            float: left;
+            left: 0px;
+            overflow: hidden;
+        }
+        .emiges-Ul ul{
+            width: 1600px;
+            height: 30px;
+        }
+        .emiges-Ul li{
+            list-style: none;
+            font-size: 12px;
+            color: #666;
+            line-height: 30px;
+            text-align: center;
+            float: left;
+            height: 30px;
+            padding: 0px 5px;
+            cursor: pointer;
+            box-sizing: border-box;
+            width: 58px;
+            display: -webkit-box;
+           -webkit-line-clamp:1;
+            -webkit-box-orient: vertical;
+            text-overflow: ellipsis;
+            overflow:hidden;
+        }
+        .Liactive{
+            background: #fff;
+        }
+        .emiges-content{
+            padding: 10px;
+            overflow: auto;
+            width: 100%;
+            height: 245px;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .emiges-content-tipnone{
+            position: absolute;
+            background-color: #fff;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            left: 0px;
+            line-height: 245px;
+            text-align: center;
+            font-size: 14px;
+            color: #bbb;
+            letter-spacing: 1px;}
+
+        .emiges-content::-webkit-scrollbar{
+            width: 5px;
+            height: 5px;
+        }
+        .emiges-content::-webkit-scrollbar-thumb{
+            border-radius: 2px;
+            -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+            background: rgba(0,0,0,0.1);
+        }
+        .emiges-content table{
+            border-collapse:collapse;
+            margin: 0 auto;
+        }
+        .emiges-content td{
+            cursor: pointer;
+            border:1px solid #ddd;
+            padding: 5px;
+        }
+        .emiges-content td div{
+            width: 20px;
+            height: 20px;
+        }
+        .emiges-content td div{
+            background-image: url(http://alstyle.xmyeditor.com/xmy/title-emoji/emoji0108.png);
+            background-position: 12px 0px;
+        }
+        .error{
+            border-color: #e15f63;
+        }
+
+        .confirm-release-bg{display: none;background-color:rgba(0,0,0,0.6);position:fixed;top:0px;left:0px;right:0px;bottom:0px;z-index:999;}
+        .confirm-release{
+            width:700px;
+            height:400px;
+            background-color:#fff;
+            position:absolute;
+            top:50%;
+            left:50%;
+            margin-top:-200px;
+            margin-left:-350px;
+            border-radius:10px;}
+        .confirm-release-tit{height:40px;border-bottom:1px solid #e7e7eb;box-sizing:border-box;line-height:39px;text-align:center;color:#333;}
+        .confirm-release-tit i{position:absolute;font-size:22px;color:#999;top:5px;right:5px;cursor:pointer;}
+        .confirm-release-tit i:hover{color:#f35858;}
+
+        .confirm-release-main{text-align:center;height:310px;padding-top:115px;box-sizing:border-box;}
+        .confirm-release-main-left{
+            background-image:url(http://alstyle.xmyeditor.com/xmyweb/20181215/5c150efbc45fealhzsrzrcg.vvnaigkxeyrbqlwjzthmcfisfmhalq);
+            width:46px;
+            height:46px;
+            background-position: 0px -6px;
+            display:inline-block;
+            vertical-align:middle;}
+        .confirm-release-main-right{display:inline-block;font-size: 14px;vertical-align:middle;margin-left:5px;}
+        .confirm-release-main-right-p1{color:#353535;text-align: left;}
+        .confirm-release-main-right-p2{color: #8d8d8d;}
+
+
+
+        .confirm-release-foot{height:50px;text-align:center;line-height:50px;}
+        .confirm-release-foot p{
+            width:100px;
+            height:32px;
+            border:1px solid #e7e7eb;
+            display:inline-block;
+            box-sizing:border-box;
+            vertical-align:top;
+            cursor:pointer;
+            margin:0px 30px;
+            border-radius:3px;
+            line-height:30px;}
+        .confirm-release-foot1{background-color:#44b549;color:#fff;}
+        .confirm-release-foot1:hover{background-color:#2f9833;}
+        .confirm-release-foot2{border:1px solid #ddd !important;color:#353535;}
+        .confirm-release-foot2:hover{background-color:#e7e7eb;}
+
+    /*保存-发布时间*/
+    .wkzc-right-foot-time{text-align:left;margin-top:5px;}
+    .wkzc-right-foot-time p{display:inline-block;vertical-align:middle;margin:0 18px 0px 0px;color:#888;font-size:12px;}
+    .wkzc-right-foot-time p i{margin-right:3px;font-size:14px;color:#bbb;}
+</style>
+<!-- 右侧 -->
+<div class="self-right wkzc-index" style="display: block;">
+    <div class="self-right-top-tips1">支持认证订阅号，所有服务号<a href="/help/362.html" target="_blank"><i class="fa fa-question-circle"></i></a></div>
+    <!-- 选择公众号 -->
+    <div class="choose-wxgzh">
+        <div class="choose-wxgzh-main">
+            <div class="choose-wxgzh-div">
+                <img src="{$selected_wechat_info.avatar}">
+                <span>{$selected_wechat_info.nickname}</span>
+                <i class="fa fa-caret-down" aria-hidden="true"></i>
+            </div>
+            <div class="choose-wxgzh-list">
+                <ul>
+                    {volist name="wechat_lists" id="vo"}
+                    <li class="choose-wxgzh-list-li1" data-id="{$vo.id}">
+                        <img src="{$vo.avatar}">
+                        <span>{$vo.nickname}</span>
+                    </li>
+                    {/volist}
+                    <li class="choose-wxgzh-list-li2"><i class="fa fa-plus-circle"></i><a href="{:url('member/wxmanage/wxaccredit')}" target="_blank">添加公众号</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="wkzc">
+        <div class="wkzc-tit">自定义菜单</div>
+
+
+        <div class="wkzc-left">
+            <div class="wkzc-left-nav">
+                {volist name="menulists" key="k" id="vo"}
+                <div data-index="{$k-1}" class="wkzc-left-nav-mean wkzc-left-nav-mean-copy" data-info='{:array2json($vo)}'>
+                    <div class="wkzc-left-lord wkzc-find-nav" data-index="{$k-1}">
+                        <p><span class="wx-menu-nums">序号:<span>{:isset($vo.sort) ? $vo.sort : 0}</span></span> <span class="menu_name wx-menu-name">{:isset($vo.name2) ? htmlspecialchars_decode($vo.name2) : '主菜单'}</span></p>
+                        <input type="text" value="{:isset($vo.sort) ? $vo.sort : 0}" onkeyup="value=value.replace(/[^\d]/g,'')">
+                        <div class="wkzc-left-lord-dele"><i class="fa fa-trash-o"></i></div>
+                    </div>
+                    <ul class="wkzc-find-nav-ul">
+                        {if condition="!empty($vo.sub_button)"}
+                        {volist name="vo.sub_button" key="index" id="item"}
+                        <li data-index="{$index-1}" class="wkzc-find-nav-li wkzc-find-nav-copy" data-info='{:array2json($item)}'>
+                            <p><span class="wx-menu-nums">序号:<span>{:isset($item.sort) ? $item.sort : 0}</span></span><span class="menu_name wx-menu-name">{:isset($item.name2) ? htmlspecialchars_decode($item.name2) : '子菜单'}</span></p>
+                            <input type="text"  value="{:isset($item.sort) ? $item.sort : 0}" onkeyup="value=value.replace(/[^\d]/g,'')">
+                            <div class="wkzc-left-nav-dele"><i class="fa fa-trash-o"></i></div>
+                        </li>
+                        {/volist}
+                        {/if}
+                        <li class="wkzc-left-nav-add" data-m-actionlog="mem_addsonmenu" {if condition="isset($vo['count'])"}{gt name="vo.count" value="4"}style="display:none"{/gt}{/if}>
+                            <i class="fa fa-plus"></i>
+                        </li>
+                    </ul>
+                </div>
+                {/volist}
+            </div>
+            <div class="wkzc-left-add" data-m-actionlog="mem_addmenu" {gt name=":count($menulists)" value="2"}style="display:none"{/gt}><i class="fa fa-plus"></i></div>
+            <p class="wkzc-left-msg">只能添加三个主菜单</p>
+            <div class="wkzc-left-view">
+                <p class="wkzc-left-view-p2" data-m-actionlog="mem_menupreview">预览</p>
+            </div>
+        </div>
+
+
+        <div class="wkzc-right-bg">
+            <div class="wkzc-right wkzc-right-much" style="display: none;">
+                <div class="wkzc-right-name">
+                    <p>菜单名称：</p>
+                    <input type="text" name="" placeholder="请输入菜单名单">
+                    <span></span>
+                    <div class="wkzc-enjom-biao"></div>
+                </div>
+                <div class="wkzc-right-content">
+                    <p>菜单内容：</p>
+                    <div class="wkzc-right-content-div">
+                        <div>
+                            <b><i style="display:block;"></i></b>
+                            <span class="wkzc-right-content-span">发送消息</span>
+                        </div>
+                        <div>
+                            <b><i></i></b>
+                            <span>跳转网页</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="wkzc-right-main">
+                        <div class="wkzc-right-main-tit">
+                            <p class="wkzc-right-main-tit-p"><i class="fa tuwen-img fa-fw" style="background-image: url(http://alstyle.xmyeditor.com/xmy/svg/tuwen_2.svg);"></i><span>图文消息</span></p>
+                            <p><i class="fa text-img" aria-hidden="true"></i><span>文字</span></p>
+                            <p><i class="fa img-img fa-fw"></i><span>图片</span></p>
+                            <p><i class="fa music-img fa-fw"></i><span>语音</span></p>
+                            <p style="margin-top: 2px;"><i class="fa fa-commenting-o" style="font-size: 18px;"></i><span>关键词回复</span></p>
+                            <!--<p><i class="fa fa-video-camera fa-fw"></i><span>视频</span></p>-->
+                        </div>
+                        <div class="wkzc-right-set">
+                            <div class="wkzc-right-set-content" style="display:block ;">
+                                <div class="wkzc-right-set-content-div">
+                                    <div class="wkzc-right-set-position">
+                                        <div class="wkzc-right-set-submenu wkzc-figure-choose">
+                                            <div class="wkzc-right-set-submenu-one">
+                                                <span><i class="fa wx-menu-minimg1" aria-hidden="true" style="font-size: 30px;"></i></span>
+                                                <p>从素材库选择</p>
+                                            </div>
+                                        </div>
+                                        <div class="wkzc-right-set-submenu" onclick="window.open('/');">
+                                            <div>
+                                                <span><i class="fa wx-menu-minimg2 fa-fw" aria-hidden="true"style="font-size: 30px;"></i></span>
+                                                <p>自建图文</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 图文效果 -->
+                                <div class="wkzc-right-set-msg-content" style="display: none;">
+
+                                </div>
+                            </div>
+                            <!--文字-->
+                            <div class="wkzc-right-set-content" style="display: none;">
+                                <div class="wkzc-right-set-content-div">
+                                    <div class="wkzc-right-set-position">
+                                        <div class="wkzc-right-set-position-input">
+                                            <textarea class="layui-textarea" id="text_textarea" style="display: none;"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="wkzc-right-set-position-footer">
+                                    <div class="wkzc-right-set-position-footer-span">
+                                        <span></span>
+                                    </div>
+                                    <div class="wkzc-right-set-position-footer-p">
+                                        <p style="display: inline-block;">还可以输入<span>230</span>字</p>
+                                        <p style="display: inline-block;color: red"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--图片-->
+                            <div class="wkzc-right-set-content" style="display: none;">
+                                <div class="wkzc-right-set-content-div">
+                                    <div class="wkzc-right-set-position">
+                                        <div class="wkzc-right-set-submenu wkzc-img-choose">
+                                            <div class="wkzc-right-set-submenu-one">
+                                                <span><i class="fa wx-menu-minimg1" aria-hidden="true" style="font-size: 30px;"></i></span>
+                                                <p>从素材库选择</p>
+                                            </div>
+                                        </div>
+                                        <div class="wkzc-right-set-submenu wx_upimage">
+                                            <div>
+                                                <span><i class="fa wx-menu-minimg3 fa-fw" aria-hidden="true" style="font-size: 30px;"></i></span>
+                                                <p>上传图片</p>
+                                            </div>
+                                            <p class="wx-menu-up-tips" >图片不超过2M，支持bmp/png/jpeg/jpg/gif格式</p>
+                                        </div>
+                                        <input type="file" style="display: none;">
+
+                                    </div>
+                                </div>
+                                <!-- 图片效果 -->
+                                <div class="wkzc-right-set-msg-content" style="display: none;">
+
+
+                                </div>
+                            </div>
+                            <!-- 语音 -->
+                            <div class="wkzc-right-set-content" style="display: none;">
+                                <div class="wkzc-right-set-content-div">
+                                    <div class="wkzc-right-set-position">
+                                        <div class="wkzc-right-set-submenu wkzc-voice-choose">
+                                            <div class="wkzc-right-set-submenu-one">
+                                                <span><i class="fa wx-menu-minimg1" aria-hidden="true" style="font-size: 30px;"></i></span>
+                                                <p>从素材库选择</p>
+                                            </div>
+                                        </div>
+                                        <div class="wkzc-right-set-submenu wkzc-right-music-puton">
+                                            <div class="wkzc-right-set-submenu-i">
+                                                <span><i class="fa wx-menu-minimg4 fa-fw" aria-hidden="true"style="font-size: 30px;"></i></span>
+                                                <p>上传语音</p>
+                                            </div>
+                                            <p class="wx-menu-up-tips" >语音不超过2M,播放长度不超过60s,mp3/wma/wav/amr格式</p>
+                                        </div>
+                                        <input type="file" style="display: none;">
+                                    </div>
+                                </div>
+                                <!-- 语音效果 -->
+                                <div class="wkzc-right-set-msg-content" style="display: none;">
+
+                                </div>
+                            </div>
+                            <!-- 关键词回复 -->
+                            <div class="wkzc-right-set-content" style="display: none;">
+                                <div class="wxcd-key-words-top">
+                                    <div class="wxcd-key-words-top-main">
+                                        <p><span>全部分组</span><i class="fa fa-sort-desc"></i></p>
+                                        <ul style="display:none;">
+                                            {notempty name="groups"}
+                                            <li title="全部分组" data-groupid="0">
+                                                <span>全部分组</span>
+                                            </li>
+                                            {volist name="groups" key="k" id="vx"}
+                                            <li title="{$vx.name}" data-groupid="{$vx.id}">
+                                                <span>{$vx.name}</span>
+                                            </li>
+                                            {/volist}
+                                            {/notempty}
+                                        </ul>
+                                    </div>
+                                    <a class="wxcd-key-words-top-add" href="/member/wxmessage/keywordreply" target="_blank">新增回复</a>
+                                </div>
+                                <div class="wxcd-key-words-main">
+                                    <div class="wxcd-key-words-main-tit">
+                                        <p class="wxcd-key-words-main-p1">选择</p>
+                                        <p class="wxcd-key-words-main-p2">关键词</p>
+                                        <p class="wxcd-key-words-main-p3">回复内容</p>
+                                    </div>
+                                    <ul>
+                                        {notempty name="reply_lists"}
+                                        {volist name="reply_lists" key="k" id="vs" }
+                                        <li data-id="{$vs.id}" data-keywords="{$vs.key_name}" data-groupid="{$vs.group_id}">
+                                            <p class="wxcd-key-words-main-p1"><span><i class="fa fa-check"></i></span></p>
+                                            <p class="wxcd-key-words-main-p2">{$vs.key_name}</p>
+                                            <p class="wxcd-key-words-main-p3">{$vs.prompt_text}</p>
+                                        </li>
+                                        {/volist}
+                                        {/notempty}
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- 视频 -->
+                            <div class="wkzc-right-set-content" style="display: none;">
+                                <div class="wkzc-right-set-content-div">
+                                    <div class="wkzc-right-set-position">
+                                        <div class="wkzc-right-set-submenu wkzc-movie-choose">
+                                            <div class="wkzc-right-set-submenu-one">
+                                                <span><i class="fa fa-folder-o" aria-hidden="true" style="font-size: 30px;"></i></span>
+                                                <p>从素材库选择</p>
+                                            </div>
+                                        </div>
+                                        <div class="wkzc-right-set-submenu wkzc-right-vioce-puton">
+                                            <div class="wkzc-right-set-submenu-video">
+                                                <a href="wkzc-video.html" style="color: #999">
+                                                    <span><i class="fa fa-video-camera fa-fw" aria-hidden="true" style="font-size: 30px;"></i></span>
+                                                    <p>上传视频</p>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <input type="file" style="display: none;">
+                                    </div>
+                                </div>
+                                <div class="wkzc-right-set-msg-content" style="display: none;">
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <p class="menu-none-tips">请设置当前菜单内容</p>
+                    </div>
+                    <div class="wkzc-right-main" style="display: none;">
+                        <div style="display: none;">
+                            <div class="wkzc-right-main-msg">
+                                <p>订阅者点击该子菜单会跳转到以下链接</p>
+                            </div>
+                            <div class="wkzc-right-main-msg-div">
+                                <div class="wkzc-right-main-msg-div-p">
+                                    <p>页面地址：</p>
+                                </div>
+                                <div class="wkzc-right-main-msg-p">
+                                    <input type="text" placeholder="请输入链接">
+                                    <p>从公众号图文消息中选择</p>
+                                </div>
+                                <div class="wkzc-right-main-msg-end" style="display: none;">
+                                    <p>来自<span class="wkzc-right-li-text">已发送</span>-《<span class="wkzc-right-table-text">万圣节</span>》
+                                    </p>
+                                    <div>重新选择</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="wkzc-right wkzc-right-mean" style="display: none;">
+                <div class="wkzc-right-name">
+                    <p>菜单名称：</p>
+                    <input type="text" name="" placeholder="请输入菜单名单">
+                    <span></span>
+                    <div class="wkzc-enjom-biao"></div>
+                </div>
+            </div>
+
+            <div class="wkzc-right-foot-time">
+                <p><i class="fa fa-clock-o"></i>最后保存时间：<span style="color:#44b549">{notempty name="time_array['update_time']"}{$time_array['update_time']}{else /}- -{/notempty}</span></p>
+                <p><i class="fa fa-clock-o"></i>最后发布时间：<span style="color:#ff9600">{notempty name="time_array['publish_time']"}{$time_array['publish_time']}{else /}- -{/notempty}</span></p>
+                <p>（ 先保存，后发布，发布时间应晚于保存时间 ）</p>
+            </div>
+
+            <div class="wkzc-right-foot">
+                    
+                <p class="wkzc-left-view-p1" data-m-actionlog="mem_publishmenu">发布</p>
+                <p class="wxzc-content-foot-keep" data-m-actionlog="mem_savemenu">保存</p>
+            </div>
+        </div>
+    <div style="clear:both;"></div>
+    </div>
+
+    <div class="wxmenu-right" style="display: none;">
+        <div class="wxmenu-right-img"><img src="http://alstyle.xmyeditor.com/sucai-png/20181221/5c1cc170e7373bqtsqdttsk.ndivutvrbuguonwtpgtsssiuomlgbe"></div>
+        <div class="wxmenu-right-tit">
+            <p class="wxmenu-right-text">你尚未添加任何菜单</p>
+            <p class="wxmenu-right-btn"><i></i><span>添加菜单</span></p>
+        </div>
+    </div>
+
+
+</div>
+
+
+    <!-- 弹窗页面 -->
+<!-- 确认删除弹窗 -->
+<div class="wkzc-delete">
+    <div class="wkzc-delete-sure">
+        <div class="wkzc-delete-sure-top">
+            <div class="wkzc-delete-sure-msg" style="color:#333">删除确认</div>
+            <div class="wkzc-delete-sure-i"><i class="fa fa-times-circle" aria-hidden="true"  style="font-size: 20px;"></i></div>
+        </div>
+        <div class="wkzc-delete-sure-center">
+            <div class="wkzc-delete-sure-make" style="width:82%;">
+                <p>删除“<span class="wkzc-delete-sure-spancenter">菜单名称</span>”菜单后，该菜单下设置的内容将被清空</p>
+            </div>
+        </div>
+        <div class="wkzc-delete-sure-foot">
+            <div class="wkzc-text-sure-foot-center">
+                <div class="wkzc-delete-sure-foot-sure">确认</div>
+                <div class="wkzc-delete-sure-foot-cancel" style="color:#555;border:1px solid #e7e7eb;">取消</div>
+            </div>
+        </div>
+    </div>
+    <div class="wkzc-delete-end">
+        <p>成功删除菜单"<span></span>"</p>
+    </div>
+</div>
+
+
+    <!-- 隐藏背景 -->
+    <div class="wkzc-hide" style="display: none;"></div>
+        <div class="wkzc-number">
+            <p>请输入菜单序号</p>
+            <p>序号越大，菜单越靠上</p>
+        </div>
+    </div>
+</div>
+
+<!--待克隆元素-->
+<div id="temp_preview" style="display: none;">
+    <!--右侧完整详情-->
+    <!--右侧简约详情-->
+    <!--左侧主菜单-->
+    <div class="wkzc-left-nav-mean wkzc-left-nav-mean-copy">
+        <div class="wkzc-left-lord wkzc-find-nav">
+            <p><span class="wx-menu-nums">序号:<span>0</span></span> <span class="menu_name wx-menu-name">主菜单</span></p>
+            <input type="text" onkeyup="value=value.replace(/[^\d]/g,'')">
+
+            <div class="wkzc-left-lord-dele"><i class="fa fa-trash-o"></i></div>
+        </div>
+        <ul class="wkzc-find-nav-ul">
+            <li class="wkzc-left-nav-add" data-m-actionlog="mem_addsonmenu">
+                <i class="fa fa-plus"></i>
+            </li>
+        </ul>
+    </div>
+
+    <!--左侧子菜单-->
+    <li class="wkzc-find-nav-li wkzc-find-nav-copy">
+        <p><span class="wx-menu-nums">序号:<span></span>0</span><span class="menu_name wx-menu-name">子菜单</span></p>
+        <input type="text" onkeyup="value=value.replace(/[^\d]/g,'')">
+        <div class="wkzc-left-nav-dele"><i class="fa fa-trash-o"></i></div>
+    </li>
+</div>
+
+
+
+
+<div class="wkzc-phone-bg" style="display: none;">
+    <div class="wkzc-phone-pop">
+        <div class="wkzc-phone-top">
+            <p class="wkzc-phone-top-p1"></p>
+            <p class="wkzc-phone-top-p2"></p>
+        </div>
+        <div class="wkzc-phone-main">
+            <div class="wkzc-phone-main-top"><img src="__WXIMG__/wkzc-phone-top.png"></div>
+            <div class="wkzc-phone-main-tit">小蚂蚁编辑器</div>
+            <div class="wkzc-phone-main-body">1</div>
+            <div class="wkzc-phone-main-bottom">
+                <p class="wkzc-phone-main-p1"><i class="fa fa-keyboard-o"></i></p>
+                <ul>
+                    <li class="wkzc-phone-main-li1">
+                        <p class="wkzc-phone-list-text"><i class="fa fa-bars" aria-hidden="true"></i><span>主菜单一</span></p>
+                        <div class="wkzc-phone-list">
+                            <div class="wkzc-phone-list-body">
+                                <span></span>
+                                <p>子菜单一11111</p>
+                                <p>子菜单二</p>
+                                <p>子菜单三</p>
+                                <p>子菜单四</p>
+                                <p>子菜单五</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="wkzc-phone-foot"></div>
+        <div class="wkzc-phone-btn">退出预览</div>
+    </div>
+</div>
+
+
+
+
+<div class="emiges-Mean">
+        <div class="emiges-Body">
+            <div class="emiges-Nav">
+                <div class="emiges-Ul">
+                    <ul style="display: block;">
+                        <li title="最近使用" class="Liactive">
+                            <span>最近使用</span>
+                        </li>
+                        {notempty name="emoji_cate"}
+                        {volist name="emoji_cate" key="k" id="v" }
+                        <li title="{$v.cate_name}">
+                            <span>{$v.cate_name}</span>
+                        </li>
+                        {/volist}
+                        {/notempty}
+                    </ul>
+                </div>
+                <div class="emiges-next">
+                    <div>
+                        <div class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
+                        <div class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="emiges-content">
+                    <table style="float: left;" id="history">
+                        
+                    </table>
+                    {notempty name="emoji"}
+                    {volist name="emoji" id="v" key="k"}
+                    <table style="float: left;display:none;">
+                        <tbody>
+                            <tr>
+                                {volist name="v" id="val" key="key"}
+                                    <td data-key="{$key}" data-catename="{$val.cate_name}" data-value="{$val.emoji}"><div data-title="{$val.title}" title="{$val.title}  {$val.emoji_len}字符" style="background-image:url({$val.back_url});background-position: {$val.style};"></div></td>
+                                    {if condition="$key % 10 == 0"}
+                                        </tr>
+                                        <tr>
+                                    {/if}
+                                {/volist}
+                        </tbody>
+                    </table>
+                    {/volist}
+                    {/notempty}
+            </div>
+        </div>
+</div>
+<!-- 发布提示框 -->
+<div class="confirm-release-bg">
+    <div class="confirm-release">
+        <div class="confirm-release-tit">温馨提示<i class="fa fa-times-circle" aria-hidden="true"></i></div>
+        <div class="confirm-release-main">
+            <div class="confirm-release-main-left"></div>
+            <div class="confirm-release-main-right">
+                <p class="confirm-release-main-right-p1">发布确认</p>
+                <p class="confirm-release-main-right-p2">发布成功后会覆盖原版本，且将在24小时内对所有用户生效，确认发布？</p>
+            </div>
+        </div>
+        <div class="confirm-release-foot">
+            <p class="confirm-release-foot1">确定</p>
+            <p class="confirm-release-foot2">取消</p>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+</script>
+<!-- <div class="foot"></div> -->
+{/block}
+{block name="memberJs"}
+<script src="__WXlay__/layui.js"></script>
+<script src="__WXJS__/common.js?ver=181222x"></script>
+<script>
+    jQuery.fn.outerHTML = function (s) {
+        return (s) ? this.before(s).remove() : $("<Hill_man>").append(this.eq(0).clone()).html();
+    };
+
+    var wechat_info = JSON.parse('{$selected_wechat_info_json}');
+
+    // 全局变量
+    var wechat_auth = 1;//公众号类型  0 : 未认证的订阅号，1：认证的订阅号，2未认证的服务号，3认证的服务号
+    var descArray = {empty name="menus"}[]{else/}JSON.parse('{$menus}'){/empty};//用来保存菜单数据的数组
+    {empty name="menus"}
+    $(".wkzc").hide();
+    $(".wxmenu-right").show();
+    {else/}
+    $(".wxmenu-right").hide();
+    $(".wkzc").show();
+    {/empty}
+    $(function(){
+        if ($(".wkzc-find-nav").length > 1) {
+            setTimeout(function(){
+                $(".wkzc-find-nav:eq(0)").click();
+            },150);
+        }
+    });
+
+    //
+    $(".wxmenu-right-btn").click(function(){
+        $(".wxmenu-right").hide();
+        $(".wkzc").show();
+    });
+
+    $(function () {
+        if (wechat_auth != 0) {
+            $(".wkzc-right-main:eq(1) > div:eq(0)").show().next().hide();
+        } else {
+            $(".wkzc-right-main:eq(1) > div:eq(1)").show().prev().hide();
+        }
+        createHtml();
+    });
+        /*
+         * 生成最近使用HTML代码
+         */
+         var emojiJson = {empty name="emojijson"}[]{else/}JSON.parse('{$emojijson}'){/empty};
+         function  createEmojiHistory(cate_name,key){
+                var history =  localStorage.getItem('emojihistory');
+                $("#emiges-content-tipnone").remove();
+                if (history == undefined || history == null) {
+                    his_arr =  [];
+                }else{
+                    his_arr.reverse();
+                }
+                var item = emojiJson[cate_name][key-1];
+                var temp_arr = [];
+                $.each(his_arr,function(k,val){
+                    if(val == null || val == undefined) return true;
+                    if (item.id == val.id) {
+                       his_arr.splice(k,1);
+                    }
+                });
+                his_arr.push(item);
+                localStorage.setItem("emojihistory",JSON.stringify(his_arr));
+                createHtml();
+         }
+
+         function createHtml(){
+            var history =  localStorage.getItem('emojihistory');
+                $("#emiges-content-tipnone").remove();
+                if (history == undefined || history == null) {
+                    $("#history").before('<div class="emiges-content-tipnone">无使用记录</div>');
+                    return false;
+                }
+                his_arr = eval("{"+ history +"}");
+                //数组排序
+                his_arr.reverse();
+                var table_html = '<tr>';
+                $.each(his_arr,function(k,item) {
+                    if(item == undefined || item == null) return true;
+                        table_html += '<td data-key="'+ (parseInt(item.k) + 1) +'" data-catename="'+ item.cate_name +'" data-value="'+ item.emoji +'"><div title="'+ item.title +'  '+ item.emoji.getBytes() +'字符" style="background-image:url('+item.back_url+');background-position: ' + item.style + ';"></div></td>';
+                    if ((k+1) % 10 == 0) {
+                        table_html += '</tr><tr>';
+                    }
+                });
+                table_html+= '</tr>';
+                $("#history").html(table_html);
+         }
+
+
+        //下一个
+        $(document).on("click",'.next',function (ev) {
+            ev.stopPropagation();
+            var left = parseInt($(".emiges-Ul > ul").css("margin-left"));
+            if (left < - 522) {
+                return false;
+            }
+            $(".emiges-Ul > ul").css("margin-left",parseInt($(".emiges-Ul > ul").css("margin-left")) - 58 + "px");
+        });
+        //上一个
+        $(document).on("click",'.prev',function (ev) {
+            ev.stopPropagation();
+            var left = parseInt($(".emiges-Ul > ul").css("margin-left"));
+            if(left >= 0){
+                return false;
+            }
+            $(".emiges-Ul > ul").css("margin-left",parseInt($(".emiges-Ul > ul").css("margin-left")) + 58 + "px");
+        });
+        /*
+        * 去除两端空格
+        * */
+        function trim(str) {
+            return str.replace(/(^[ \t\n\r]+)|([ \t\n\r]+$)/g, '');
+        }
+        //点击分类切换
+        $(document).on("click",".emiges-Ul li",function (ev) {
+            ev.stopPropagation();
+            var index = $(this).index();
+            if(trim($(this).text()) == "最近使用" && $(".emiges-content > table:eq(0)").find("td").length == 0){
+                $(".emiges-content-tipnone").show();
+            }else{
+                $(".emiges-content-tipnone").hide();
+            }
+
+            var margin = isNaN(parseInt($(".emiges-Ul > ul").css("margin-left"))) ? 0 : Math.abs(parseInt($(".emiges-Ul > ul").css("margin-left")));
+            if ((margin / 58 + 4)  == index){
+                $(".next").click();
+                $(".next").click();
+            }
+            if ((margin / 58)  == index){
+                $(".prev").click();
+                $(".prev").click();
+            }
+            $(".Liactive").removeClass("Liactive");
+            $(this).addClass("Liactive");
+            $(".emiges-content > table").hide();
+            $(".emiges-content > table:eq("+index+")").show();
+        });
+        //在文本框光标处插入
+        function insertAtCaret(textObj, textFeildValue) {
+            if (document.all) {
+                if (textObj.createTextRange && textObj.caretPos) {
+                    var caretPos = textObj.caretPos;
+                    caretPos.text = caretPos.text.charAt(caretPos.text.length - 1) == ' ' ? textFeildValue + ' ' : textFeildValue;
+                } else {
+                    textObj.value = textFeildValue;
+                }
+            } else {
+                if (textObj.setSelectionRange) {
+                    var rangeStart = textObj.selectionStart;
+                    var rangeEnd = textObj.selectionEnd;
+                    var tempStr1 = textObj.value.substring(0, rangeStart);
+                    var tempStr2 = textObj.value.substring(rangeEnd);
+                    textObj.value = tempStr1 + textFeildValue + tempStr2;
+                } else {
+                    alert("This version of Mozilla based browser does not support setSelectionRange");
+                }
+            }
+        }
+        //设置文本框
+        function setCaretPosition(tObj, sPos){
+            if(tObj.setSelectionRange){
+                setTimeout(function(){
+                    tObj.setSelectionRange(sPos, sPos);
+                    tObj.focus();
+                }, 0);
+            }else if(tObj.createTextRange){
+                var rng = tObj.createTextRange();
+                rng.move('character', sPos);
+                rng.select();
+            }
+        }
+        //获取选中的文字
+        function getSelectText(editor) {
+            if (!editor) return; editor.focus();
+            if (editor.document && editor.document.selection)
+                return editor.document.selection.createRange().text;
+            else if ("selectionStart" in editor)
+                return editor.value.substring(editor.selectionStart, editor.selectionEnd);
+        }
+
+</script>
+<script src="__WXJS__/wxmenu.js?ver=190628"></script>
+<script>
+    $(function () {
+        $.each($(".emiges-content").find("td"),function (k,item) {
+            $(item).children('div').prop('title', $(item).children('div').data('title') + "  " + $(item).data('value').getBytes() + "字符");
+        });
+    });
+</script>
+{/block}
+
+

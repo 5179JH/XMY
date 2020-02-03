@@ -1,0 +1,49 @@
+
+
+/*素材库*/
+.sc{width:1200px;margin:0 auto;font-size:0px;padding:15px 20px 0px;}
+.sc-row{display:inline-block;vertical-align:top;font-size:14px;padding:0px 5px;width:290px;}
+.sc-list{box-shadow: 0px 0px 3px #aaa;cursor:pointer;margin:0px 0px 10px;background: #f5f5f5;}
+.sc-list:hover{box-shadow:0px 0px 8px #444;box-sizing:border-box;}
+.sc-cont{background-color:#fff;padding:10px;}
+.sc-tag{font-size:0px;text-align:left;padding:10px 6px;}
+.sc-tag a{display:inline-block;vertical-align:middle;padding:0px 8px;margin:0px 8px 8px 0px;color:#FEFEFE;background-color:#828d95;border-radius:15px;font-size:12px;line-height:20px;}
+.sc-tag a:hover{background-color: #4d4d4d;}
+.sc-foot{height:32px;line-height:26px;padding:0px 10px 6px;color:#828d95;}
+.sc-foot .sp0{float:right;color:#ff9600;font-size: 16px;margin-left:10px;}
+.sc-foot .sp1{float:right;}
+.sc-foot .sp2{float:right;margin-right:10px;}
+.sc-foot .sp3{float:right;margin-right:10px;}
+.sc-foot .sp4{float:left;}
+.sc-foot .sp1-add{float:right;margin-right:10px;color:#ff9600;}
+.sc-foot .sp1 i{margin-right:3px;font-size:16px;}
+.sc-foot .sp2 i{margin-right:3px;font-size:15px;position:relative;top:1px;}
+.sc-foot .sp3 i{margin-right:3px;font-size:13px;}
+.sc-foot .sp1-add i{margin-right:3px;font-size:16px;}
+
+
+
+/*分页*/
+#sc-page{text-align:center;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

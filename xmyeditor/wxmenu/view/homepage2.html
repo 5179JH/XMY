@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>自定义菜单_水熊虫投票平台</title>
+	<meta name="renderer" content="webkit">
+	<meta name="referrer" content="never">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link rel="stylesheet" href="../../static/layui/css/layui.css">
+	<link rel="stylesheet" href="../../static/icon/css/font-awesome.css">
+	<link rel="stylesheet" href="../../static/css/common/layui_add.css">
+	<link rel="stylesheet" href="../../static/css/common/base.css">
+	<link rel="stylesheet" href="../../static/css/common/common.css">
+	<link rel="stylesheet" href="../../static/css/wxmenu/wxmenu.css">
+</head>
+<body>
+<!-- 顶部导航 -->
+<div class="vote-header"></div>
+<!-- 左侧菜单 -->
+<div class="vote-menu"></div>
+<!-- 内容部分 -->
+<div class="vote-body" data-id="101" data-type="2" data-son="1">
+	<div class="vote-body-main">
+		<p class="wxmenu-top-nav">
+			<span>自定义菜单</span>
+			<span>支持认证的订阅号，所有服务号</span>
+			<a href="/help/15.html" target="_blank"><i class="fa fa-question-circle"></i></a>
+		</p>
+		<!-- 菜单列表与内容 -->
+		<div class="nva-main" style="display:none;">
+			<!-- 左侧菜单 -->
+			<div class="wxmenu">
+				<!-- 总菜单按钮 -->
+				<div class="wxmenu-all"><p><i class="fa fa-caret-down"></i>自定义菜单</p><span style="display:none;"><i class="fa fa-plus"></i></span></div>
+				<div class="wxnav"><p class="wxnav-a-befor"></p></div>
+				<div class="nav-view c-btn" style="display:none;">预览</div>
+			</div>
+			<!-- 右侧内容 -->
+			<div class="navcon" style="display:none;">
+				<!-- 菜单名称 -->
+				<div class="navcon-name" data-num="1">
+					<p class="p1">菜单名称：</p>
+					<p class="p2"><input type="text" class="layui-input"></p>
+					<p class="p3"><i class="fa fa-smile-o"></i></p>
+					<p class="p4">子菜单字数不超过20个汉字或40个字母</p>
+				</div>
+				<!-- 内容选择 -->
+				<div class="navcon-body" style="display:none" data-type="1">
+					<!-- 选择发送消息、跳转网页 -->
+					<div class="navcon-chose">
+						<p class="p1">菜单内容：</p>
+						<form class="layui-form">
+							<div class="d1"><input type="radio" name="navcon-name" title="发送消息" lay-filter="navcon-radio1" checked></div>
+							<div class="d2"><input type="radio" name="navcon-name" title="跳转网页" lay-filter="navcon-radio2"></div>
+						</form>
+					</div>
+					<!-- 发送消息内容选择 -->
+					<div class="navcon-type">
+						<ul class="navcon-nav">
+							<li class="navcon-nav-add"><i class="custom-cicon10"></i><i class="custom-cicon11"></i>图文消息</li>
+							<li class=""><i class="custom-cicon12"></i><i class="custom-cicon13"></i>文字</li>
+							<li class=""><i class="custom-cicon14"></i><i class="custom-cicon15"></i>图片</li>
+							<li class=""><i class="custom-cicon16"></i><i class="custom-cicon17"></i>语音</li>
+							<li class=""><i class="custom-cicon18"></i><i class="custom-cicon19"></i>关键词回复</li>
+						</ul>
+						<ul class="navcon-con">
+							<!-- 选择图文 -->
+							<li class="navcon-act" >
+								<div class="navcon-act-chose">
+									<div class="navcon-act-chose-pop">
+										<p class="p1"><i class="custom-cicon27"></i></p>
+										<p class="p2">从素材库选择</p>
+									</div>
+								</div>
+								<div class="navcon-act-show" style="display:none;"></div>
+							</li>
+							<!-- 文字 -->
+							<li class="navcon-txt" style="display:none;">
+								<div class="wxeditor1-main">
+									<textarea id="wxeditor10"></textarea>
+									<p class="wxeditor-tips"><span>还可以输入230字</span>，按下Enter键换行</p>
+								</div>
+							</li>
+							<!-- 图片 -->
+							<li class="navcon-img" style="display:none;">
+								<div class="navcon-img-chose">
+									<div class="navcon-img-left">
+										<p class="p1"><i class="custom-cicon27"></i></p>
+										<p class="p2">从素材库选择</p>
+									</div>
+									<div class="navcon-img-right">
+										<p class="p1"><i class="custom-cicon28"></i></p>
+										<p class="p2">上传图片</p>
+									</div>
+								</div>
+								<div class="navcon-img-show" style="display:none;"></div>
+							</li>
+							<!-- 语音 -->
+							<li class="navcon-voc" style="display:none;">
+								<div class="navcon-voc-chose">
+									<div class="navcon-voc-left">
+										<p class="p1"><i class="custom-cicon27"></i></p>
+										<p class="p2">从素材库选择</p>
+									</div>
+									<div class="navcon-voc-right">
+										<p class="p1"><i class="custom-cicon31"></i></p>
+										<p class="p2">上传语音</p>
+									</div>
+								</div>
+								<div class="navcon-voc-show" style="display:none;"></div>
+							</li>
+							<!-- 关键词 -->
+							<li class="navcon-key" style="display:none;" data-key="">
+								<form class="layui-form">
+									<div class="navcon-key-top">
+										<div class="navcon-key-grop">
+											<select lay-filter="navcon-key-select" class="navcon-key-sel">
+											</select>
+										</div>
+										<p class="c-btn navcon-key-btn"><a href="../wxreply/wxwords.html">新增回复</a></p>
+									</div>
+									<p class="navcon-key-tit"><span>选择</span><span>关键词</span><span>回复内容</span></p>
+									<ul class="navcon-key-ul"></ul>
+									<p class="navcon-key-none" style="display:none;">暂无关键词</p>
+								</form>
+							</li>
+						</ul>
+					</div>
+					<!-- 跳转网页内容 -->
+					<div class="navcon-url" style="display:none;">
+						<p class="navcon-url-titl">订阅者点击该子菜单会跳转到以下链接</p>
+						<p class="navcon-url-iput"><span>页面地址：</span><input type="text" name="" class="layui-input"></p>
+						<p class="navcon-url-tips">从公众号图文消息中选择</p>
+					</div>
+				</div>
+				<!-- 保存时间、发布时间 -->
+				<div class="navcon-time">
+				 	<span class="layui-icon layui-icon-log sp1"></span>
+				 	<span class="sp2">最后保存时间:</span>
+				 	<span class="sp3"></span>
+				 	<span class="layui-icon layui-icon-log sp4"></span>
+				 	<span class="sp5">最后发布时间:</span>
+				 	<span class="sp6"></span>
+				 	<span class="sp7">( 先保存，后发布，发布时间应晚于保存时间 )</span>
+				</div>
+				<!-- 保存按钮 -->
+				<div class="navcon-foot">
+					<p class="c-btn navcon-foot-sure">保存</p>
+					<p class="c-btn navcon-foot-rele">发布</p>
+				</div>
+
+				<!-- 表情图 -->
+				<div class="emiges" style="display:none;">
+					<div class="emiges-body">
+						<div class="emiges-nav">
+							<div class="emiges-nav-main">
+								<ul class="emiges-nav-ul">
+									<li title="最近使用" class="emiges-nav-add"><span>最近使用</span></li>
+								</ul>
+							</div>
+							<div class="emiges-nav-btn">
+								<p class="emiges-nav-prev"><i class="fa fa-angle-left"></i></p>
+								<p class="emiges-nav-next"><i class="fa fa-angle-right"></i></p>
+							</div>
+						</div>
+						<div class="emiges-main">
+							<ul class="emiges-main-ul">
+								<li class="emiges-main-none">无使用记录</li>
+							</ul>
+							<p class="emiges-main-before"></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 清除浮动 -->
+			<div class="c-lear"></div>
+		</div>
+
+		<!-- 暂无菜单 -->
+		<div class="nva-none" style="display: none;">
+			<div class="nva-none-left"><img src="../../static/images/wxmenu.jpg"></div>
+			<div class="nva-none-right">
+				<p class="tips">您尚未添加公众号菜单</p>
+				<p class="btn"><span><i class="layui-icon layui-icon-add-1"></i></span>添加菜单</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="phone-bg">
+	<div class="phone">
+		<div class="phone-main">
+			<!-- 装饰 -->
+			<div class="phone-adorn">
+				<!-- 顶部圆点 -->
+				<p class="phone-adorn-p1"></p>
+				<!-- 顶部线条 -->
+				<p class="phone-adorn-p2"></p>
+				<!-- 底部圆圈 -->
+				<p class="phone-adorn-p3"></p>
+				<!-- 手机顶部图 -->
+				<p class="phone-adorn-p4"><img src="../../static/images/phone-top.png"></p>
+				<!-- 键盘图标 -->
+				<p class="phone-adorn-p5"><i class="fa fa-keyboard-o"></i></p>
+			</div>
+			<div class="phone-body">
+				<!-- 添加内容的标识 -->
+				<p class="phone-before"></p>
+			</div>
+			<!-- 菜单 -->
+			<div class="phone-nav"></div>
+		</div>
+		<div class="c-btn phone-quit">退出预览</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+<!-- 点击添加主菜单 -->
+<script id="nav-a-html-add" type="text/html">
+	<div class="wxnav-one">
+		<div class="wxnav-a wxnav-nav" data-id='1' data-info='{"act_dec":"","act_img":"","act_name":"","act_url":"","id":"1","media_id":"","name":"主菜单","content_type":"news"}' data-name="主菜单" data-tpye="1">
+			<p class="c-hide1 wxnav-a-p1 wxnav-p"><i class="fa fa-caret-down"></i><span>主菜单</span></p>
+			<p class="wxnav-a-p2"><i class="fa fa-plus"></i></p>
+			<p class="wxnav-a-p3"><i class="fa fa-remove"></i></p>
+		</div>
+		<ul class="wxnav-ul">
+			<li class="wxnav-b-befor"></li>
+		</ul>
+	</div>
+</script>
+<!-- 点击添加子菜单 -->
+<script id="nav-b-html-add" type="text/html">
+	<li class="wxnav-b wxnav-nav" data-id='1' data-info='{"act_dec":"","act_img":"","act_name":"","act_url":"","id":"1","media_id":"","name":"子菜单","content_type":"news"}' data-name="子菜单" data-tpye="2">
+		<p class="c-hide1 wxnav-b-p1 wxnav-p"><span>子菜单</span></p>
+		<p class="wxnav-b-p2"><i class="fa fa-remove"></i></p>
+	</li>
+</script>
+<!-- 菜单渲染 -->
+<script id="nav-html-show" type="text/html">
+	{{#  layui.each(d, function(index,item){ }}
+	<div class="wxnav-one">
+		{{# if( item.content_type == undefined ){ }}
+			<div class="wxnav-a wxnav-nav" data-id='2' data-info='{{ JSON.stringify(item.info) }}' data-name="{{ item.name }}" data-tpye="1">
+				<p class="c-hide1 wxnav-a-p1 wxnav-p"><i class="fa fa-caret-down"></i><span>{{ item.name }}</span></p>
+				<p class="wxnav-a-p2"><i class="fa fa-plus"></i></p>
+				<p class="wxnav-a-p3"><i class="fa fa-remove"></i></p>
+			</div>
+			<ul class="wxnav-ul">
+				{{#  layui.each(item.sub_button, function(index,ite){ }}
+				<li class="wxnav-b wxnav-nav" data-id='1' data-info='{{ JSON.stringify(ite) }}' data-name="{{ ite.name }}" data-tpye="2">
+					<p class="c-hide1 wxnav-b-p1 wxnav-p"><span>{{ ite.name }}</span></p>
+					<p class="wxnav-b-p2"><i class="fa fa-remove"></i></p>
+				</li>
+				{{# }); }}
+				<li class="wxnav-b-befor"></li>
+			</ul>
+		{{# }else{ }}
+			<div class="wxnav-a wxnav-nav" data-id='1' data-info='{{ JSON.stringify(item) }}' data-name="{{ item.name }}" data-tpye="1">
+				<p class="c-hide1 wxnav-a-p1 wxnav-p"><i class="fa fa-caret-down"></i><span>{{ item.name }}</span></p>
+				<p class="wxnav-a-p2"><i class="fa fa-plus"></i></p>
+				<p class="wxnav-a-p3"><i class="fa fa-remove"></i></p>
+			</div>
+			<ul class="wxnav-ul">
+				<li class="wxnav-b-befor"></li>
+			</ul>
+		{{# } }}
+	</div>
+	{{# }); }}
+	<p class="wxnav-a-befor"></p>
+</script>
+<!-- 关键词列表 -->
+<script id="navcon-key-html" type="text/html">
+	{{#  layui.each(d, function(index, item){ }}
+	<li class="navcon-key-li" data-id="{{ item.id }}">
+		<p><span class="navcon-key-chose"><b></b><i class="layui-icon layui-icon-ok"></i></span></p>
+		<p>{{ item.key_html }}</p>
+		<p>{{ item.num_txt }}</p>
+	</li>
+	{{# }); }}
+</script>
+<!-- 微信表情图展示 -->
+<script id="emiges-html" type="text/html">
+	<ul class="emiges-main-ul" style="display:none;">
+		{{#  layui.each(d, function(index, item){ }}
+		<li title="{{ item.title }}" data-key="{{ item.listorder }}" data-catename="{{ item.cate_name }}" data-value="{{ item.emoji }}" class="emiges-main-li">
+			<p style="background-image:url({{ item.back_url }});background-position:{{ item.style }};"></p>
+		</li>
+		{{# }); }}
+	</ul>
+</script>
+<!-- 手机端菜单 -->
+<script id="phone-html" type="text/html">
+	<ul class="phone-nav-ul phone-nav-ul{{ d.length }}">
+		{{#  layui.each(d, function(index, item){ }}
+			{{# if( item.content_type == undefined ){ }}
+			<li>
+				<p class="c-hide1 phone-nav-a phone-nav-list" data-info=""><i class="fa fa-bars"></i><span>{{ item.name }}</span></p>
+				<div class="phone-nav-d">
+					{{#  layui.each(item.sub_button, function(index,ite){ }}
+					<p class="c-hide1 phone-nav-b phone-nav-list" data-info='{{ JSON.stringify(ite) }}'>{{ ite.name }}</p>
+					{{# }); }}
+				</div>
+			</li>
+			{{# }else{ }}
+			<li>
+				<p class="c-hide1 phone-nav-a phone-nav-list" data-info='{{ JSON.stringify(item) }}'><i class="fa fa-bars"></i><span>{{ item.name }}</span></p>
+			</li>
+			{{# } }}
+		{{# }); }}
+	</ul>
+</script>
+
+
+
+<script src="../../static/js/common/jquery_v3.3.1.js"></script>
+<script src="../../static/layui/layui.js"></script>
+<script src="../../static/js/common/common.js"></script>
+<script src="../../static/js/common/base.js"></script>
+<script src="../../static/js/wxreply/wxcommon.js"></script>
+<script src="../../static/js/wxmenu/wxmenu.js?var=09172039"></script>
+
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+  	<title>微信公众号语音</title>
+  	<meta name="renderer" content="webkit">
+  	<meta name="referrer" content="never">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link rel="stylesheet" href="__WXCSS__/font-awesome.css"/>
+	<link rel="stylesheet" href="__WXlay__/css/layui.css">
+	<link rel="stylesheet" href="__WXCSS__/base.css"/>
+	<style type="text/css">
+		.wxvic{width:740px;height:480px;margin:0 auto;}
+		/*顶部标题*/
+		.wxvic-top{padding:30px 20px 0;position:relative;font-size:14px;height:100px;box-sizing:border-box;}
+		.wxvic-top-p1{font-size:16px;color: #44b549;height:20px;line-height:20px;}
+		.wxvic-top-p2{margin-top:6px;color: #727272;height:14px;line-height:14px;}
+		.wxvic-top-p3{position:absolute;top:34px;right:20px;width:110px;height:32px;color:#fff;line-height:32px;background-color:#44b549;text-align:center;cursor:pointer;border-radius:2px;}
+		.wxvic-top-p3:hover{opacity:0.8;}
+		/*内容部分*/
+		.wxvic-ul{width:100%;height:320px;overflow-y:auto;}
+		.wxvic-li{text-align:left;height:61px;border-bottom:1px solid #E3E3E3;padding:15px 20px 0;box-sizing:border-box;font-size:15px;color:#333;cursor:pointer;}
+		.wxvic-li p{float:left;height:40px;letter-spacing:1px;}
+		.wxvic-li-p1{width:40px;float:left;margin-top:2px;}
+		.wxvic-li-p2{width:330px;line-height:40px;}
+		.wxvic-li-p3{width:110px;line-height:40px;margin-right:50px;text-align:center;}
+		.wxvic-li-p4{width:140px;box-sizing:border-box;cursor:pointer;margin-left:30px;text-align:center;line-height:40px;}
+		.wxvic-li-p4:hover{opacity:0.7;}
+		.wxvic-li-p4 .sp2{font-size:14px;color:#666;}
+		.wxvic-li-p4 .sp3{font-size:14px;color:#666;margin-left:6px;}
+		.wxvic-li-p4 img{width:18px;vertical-align:margin-right;}
+		.wxvic-li-p4 i{margin:0 auto;}
+		/*无内容时*/
+		.wxvic-none{line-height:300px;font-size:16px;color:#999;text-align:center;}
+		/*页码*/
+		#wx-page{text-align:right;padding-right:24px;}
+		.layui-laypage a,.layui-laypage span{margin:0px 2px;padding:0 10px;height:26px;line-height:26px;box-sizing:border-box;}
+		.layui-laypage span{height:24px;}
+		.layui-laypage a{border:1px solid #E3E3E3;}
+		.layui-laypage span{border:none;}
+		.layui-laypage .layui-laypage-spr{border:none;}
+		.layui-laypage .layui-laypage-curr .layui-laypage-em{background-color:#44b549;}
+		.layui-laypage a:hover{color:#44b549;}
+		.layui-laypage a .layui-icon{font-size:12px;}
+	</style>
+</head>
+<body>
+<form class="layui-form">
+	<!--音乐弹窗-->
+	<div class="wxvic">
+		<!--顶部-->
+		<div class="wxvic-top">
+			<p class="wxvic-top-p1">素材库</p>
+			<p class="wxvic-top-p2">由于版本兼容的原因，你暂时只可以选择60秒内的语音发送</p>
+			<p class="wxvic-top-p3">上传文件</p>
+		</div>
+		<!--内容-->
+		<ul class="wxvic-ul"></ul>
+		<audio src="" id="wxvic-play"></audio>
+		<!-- 分页 -->
+		<div id="wx-page"></div>
+	</div>
+</form>
+
+<script id="wxvic-html" type="text/html">
+	{{#  layui.each(d.data.item, function(index, item){ }}
+	<li class="wxvic-li" data-id="{{ item.media_id }}" data-name="{{ item.name }}" data-url="" data-min="" data-sec="">
+		<div class="wxvic-li-p1"><input type="radio" name="wxvic-radio"></div>
+		<p class="wxvic-li-p2 c-hide1">{{ item.name }}</p>
+		<p class="wxvic-li-p3">{{ time_Stamp(item.update_time).slice(0, 11) }}</p>
+		<p class="wxvic-li-p4">
+			<i class="auto-cicon23"></i>
+			<span class="sp1" style="display:none;"><img src="/static/wxmember/img/music_audio.gif"><span class="sp3">00:00</span> / <span class="sp2">00:00</span></span>
+		</p>
+	</li>
+	{{# }); }}
+</script>
+<script src="__WXJS__/jquery-3.3.1.min.js"></script>
+<script src="__WXlay__/layui.js"></script>
+<script src="__WXJS__/common.js"></script>
+<script type="text/javascript">
+layui.define(['upload','layer','form','laypage','laytpl'], function(exports){
+	var form = layui.form
+	var layer = layui.layer;
+	var laytpl = layui.laytpl;
+	var upload = layui.upload;
+	var laypage = layui.laypage;
+
+	// 音乐播放计时器
+	var intval_voice_time;
+	// 播放按钮
+	var wxvic_player = $('#wxvic-play')[0];
+	// 请求音乐列表
+	wxvoc_page(1)
+	function wxvoc_page(curr){
+		Loading() // 加载
+		ajax_none({"type":"voice","limit":5,page:curr},'/member/wxcommon/getStyle','post',true,function (result) {
+			result = typeof result === 'string' ? $.parseJSON(result) : result;
+			LoadClose() // 关闭加载
+			// 请求成功
+			if( result.code == 1 ){
+				// 语音总数
+				var nums = result.data.total_count;
+				// 语音为空时-显示暂无素材
+				if( nums == 0 ){
+					$('.wxvic-ul').html('<p class="wxvic-none">暂无素材</p>')
+				}else{
+					laytpl($('#wxvic-html').html()).render(result, function(html){
+						$('.wxvic-ul').html(html);
+					});
+					form.render();
+				}
+				// 判断是否够分页
+				if( nums <= 5 ){
+					return false;
+				}else{
+					// 分页
+					laypage.render({
+						//注意，这里的 test1 是 ID，不用加 # 号
+						elem: 'wx-page'
+						,count:nums
+						,limit:5
+						,groups:3
+						,curr: curr
+						,layout: ['prev','page','next']
+						,prev:'<i class="layui-icon layui-icon-left"></i>'
+						,next:'<i class="layui-icon layui-icon-right"></i>'
+						,jump: function(obj,first){
+							//首次不执行
+							if(!first){
+								wxvoc_page(obj.curr)
+							}
+						}
+					});
+				}
+			}else{
+				layer.msg(result.msg,{time:1500});
+			};
+			
+		});
+	};
+	// 上传语音
+	var uploadInst = upload.render({
+		elem: '.wxvic-top-p3' //绑定元素
+		,url:'/member/wxcommon/upLoadStyle' //上传接口
+		,accept: 'audio'
+		,acceptMime: 'audio/mp3,audio/wma,audio/wav,audio/amr'
+		,data: {"type":"voice"}
+		,size:2048
+		// 上传前回调
+		,before: function(obj){
+			Loading() // 加载
+		}
+		// 上传后回调
+		,done: function(res,index,upload){
+			LoadClose() // 关闭加载
+			if( res.code == 1 ){
+				// 重新请求音乐列表
+				wxvoc_page(1);
+			}else{
+				layer.msg(res.msg,{time:1500});
+			}
+			form.render("radio");
+		}
+		// 上传报错
+		,error: function(){
+			LoadClose() // 关闭加载
+			layer.msg("服务器连接失败");
+		}
+	});
+	// 选择语音
+	$(document).on('click','.wxvic-li',function(){
+		// 当前语音被选中
+		$(this).find('input').prop({checked:true});
+		form.render();
+		$('.wxvic-li').removeClass('wxvic-add');
+		$(this).addClass('wxvic-add');
+	});
+	// 播放按钮
+	$(document).on('click','.wxvic-li-p4 i',function(){
+		// 父级添加class
+		$('.wxvic-li').removeClass('wxvic-add');
+		$(this).parents('.wxvic-li').addClass('wxvic-add');
+		// 音乐id
+		var this_id = $(this).parents('.wxvic-li').attr("data-id");
+		// 音乐链接
+		var this_url = $(this).parents('.wxvic-li').attr("data-url");
+		// 判断链接是否为空
+		if( this_url == '' ){
+			Loading() // 加载
+			ajax_none({"media_id":this_id},'/member/wxcommon/getVoiceInfo','post',true,function (result) {
+				result = typeof result === 'string' ? $.parseJSON(result) : result;
+				LoadClose() // 关闭加载
+				// 请求成功
+				if( result.code == 1 ){
+					// 获取分钟
+					var this_min = Math.floor(result.data.times / 60);
+					// 分钟数小于10前面加0
+					if( this_min<10 ){this_min = '0'+this_min}
+					this_min = this_min+':'+Math.ceil(result.data.times % 60);
+					// 获取秒数
+					var this_sec = Math.ceil(result.data.times);
+					// 音乐链接
+					this_url = result.data.voice_url;
+					// 赋值
+					$('.wxvic-add').attr("data-url",this_url);
+					$('.wxvic-add').attr("data-min",this_min);
+					$('.wxvic-add').attr("data-sec",this_sec);
+					// 播放函数
+					wxvic_paly();
+				}else{
+					layer.msg(result.msg,{time:1500});
+				}
+			});
+		}else{
+			// 播放函数
+			wxvic_paly();
+		}
+	});
+	// 播放函数
+	function wxvic_paly(){
+		// 所有显示未播放
+		$('.wxvic-li-p4 i').show();
+		// 所有播放隐藏
+		$('.wxvic-li-p4 .sp1').hide();
+		// 音频链接赋值
+		$('#wxvic-play').attr("src",$('.wxvic-add').attr("data-url"));
+		// 所有秒数清零
+		$('.wxvic-li-p4 .sp3').html("00:00");
+		// 赋值分钟数
+		$('.wxvic-li-p4 .sp2').html($('.wxvic-add').attr("data-min"));
+		// 当前未播放隐藏
+		$('.wxvic-add .wxvic-li-p4 i').hide();
+		// 当前播放显示
+		$('.wxvic-add .wxvic-li-p4 .sp1').show();
+		// 清除所有计时器
+		clearInterval(intval_voice_time);
+		// 计时器
+		var sec = 0,min = 0,dat = 0;
+		intval_voice_time = setInterval(function(){
+			dat++,sec++
+			// 当秒数小于10时，秒数前加0
+			if( sec < 10 ){
+				sec='0'+sec
+			}
+			// 当秒数等于60时，秒数清零0，分钟加1
+			if(sec == 60){
+				sec = 0
+				sec='0'+sec
+				min++
+			}
+			// 当分钟小于10时，分钟前加0
+			if( min < 10 ){
+				min="0" + parseInt(min)
+			}else if( min == 0 ){
+				min = "0" + min
+			}
+			// 插入时间
+			$('.wxvic-add .wxvic-li-p4 .sp3').html(min+':'+sec)
+			// 时间到了清除计时器
+			if( dat==$('.wxvic-add').attr("data-sec") ){
+				clearInterval(intval_voice_time);
+				wxvic_player.pause();//暂停
+				$('.wxvic-add .wxvic-li-p4 .sp1').hide();
+				$('.wxvic-add .wxvic-li-p4 i').show();
+			}
+		},1000);
+		// 播放
+		wxvic_player.play();
+	}
+	// 暂停按钮
+	$(document).on('click','.wxvic-li-p4 .sp1',function(){
+		// 暂停播放
+		wxvic_player.pause();
+		// 所有播放状态隐藏
+		$('.wxvic-li-p4 .sp1').hide();
+		// 未播放状态显示
+		$('.wxvic-li-p4 i').show();
+		// 清除计时器
+		clearInterval(intval_voice_time);
+	});
+});
+</script>
+</body>
+</script>
+</body>
+</html>

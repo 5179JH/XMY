@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>素材库</title>
+	<link rel="stylesheet" type="text/css" href="../../common/css/font.css"/>
+	<link rel="stylesheet" type="text/css" href="../../common/layui/css/layui.css"/>
+	<link rel="stylesheet" type="text/css" href="../../common/css/base.css"/>
+	<link rel="stylesheet" type="text/css" href="full.css"/>
+</head>
+<body>
+<div>
+	
+</div>
+
+
+<div class="sc">
+	<div class="sc-main">
+		<ul class="sc-row"></ul>
+		<ul class="sc-row"></ul>
+		<ul class="sc-row"></ul>
+		<ul class="sc-row"></ul>
+		<div id="sc-page"></div>
+	</div>
+</div>
+
+<!-- 单素材 -->
+<script class="sc-html" type="text/html">
+	<li class="sc-list">
+		<a href="#"><div class="sc-cont"><img src="{{ d.cover_pic }}"></div></a>
+		<p class="sc-tag">
+			{{#  layui.each(d.tags, function(index,item){ }}
+			<a href="#">{{ item }}</a>
+			{{# }); }}
+		</p>
+		<p class="sc-foot">
+			{{# if( d.is_vip == 1 ){ }}
+			<span class="sp0"><i class="fa fa-vimeo"></i></span>
+			{{# } }}
+			{{# if( d.is_admin == 0 ){ }}
+			<span class="sp1"><i class="fa fa-star-o"></i>{{ d.favorite }}</span>
+			{{# }else{ }}
+			<span class="sp1-add"><i class="fa fa-star"></i>{{ d.favorite }}</span>
+			{{# } }}
+			<span class="sp2"><i class="fa fa-pencil-square-o"></i>{{ d.use_number }}</span>
+			<span class="sp3"><i class="fa fa-database"></i>{{ d.coin }}</span>
+			<span class="sp4">ID:{{ d.id }}</span>
+		</p>
+	</li>
+</script>
+
+<script src="../../common/js/jq.js"></script>
+<script src="../../common/layui/layui.js"></script>
+<script src="../../common/js/base.js"></script>
+<script src="full.js"></script>
+</body>
+</html>

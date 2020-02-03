@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+  	<title>微信公众号图片</title>
+  	<meta name="renderer" content="webkit">
+  	<meta name="referrer" content="never">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link rel="stylesheet" href="__WXCSS__/font-awesome.css"/>
+	<link rel="stylesheet" href="__WXlay__/css/layui.css">
+	<link rel="stylesheet" href="__WXCSS__/base.css"/>
+	<style type="text/css">
+		*{box-sizing:border-box;}
+		.wximag{width:754px;height:500px;margin:0 auto;padding-top:24px;}
+		/*上传按钮*/
+		.wximag-top{height:32px;line-height:32px;padding-left:12px;}
+		.wximag-top div{height:32px;width:100px;background-color:#44b549;color:#fff;float:left;text-align:center;cursor:pointer;border-radius:2px;}
+		.wximag-top div:hover{opacity:0.8;}
+		.wximag-top p{float:left;margin-left:10px;color:#727272;}
+		/*图片展示部分*/
+		.wximag-ul{font-size:0px;margin-top:20px;width:100%;height:378px;overflow-y:auto;overflow-x:hidden;padding:10px 0px 0px;}
+		.wximag-ul::-webkit-scrollbar{width:6px;height:6px;}
+		.wximag-ul::-webkit-scrollbar-track {background-color:rgba(0,0,0,0);}
+		.wximag-ul::-webkit-scrollbar-thumb{background-color:#dfdfdf;}
+		.wximag-li{width:33.33%;display:inline-block;vertical-align:middle;padding: 0px 12px 12px;}
+		.wximag-li-main{position:relative;cursor:pointer;font-size:14px;}
+		.wximag-li-p1{height:150px;line-height:142px;text-align:center;border:1px solid #e7e7eb;padding:2px;}
+		.wximag-li-p1 img{max-width:100%;max-height:100%;vertical-align:middle;}
+		.wximag-li-p2{height:30px;line-height:30px;text-align:center;color:#727272;}
+		.wximag-li-p3{position:absolute;top:0px;left:0px;right:0;bottom:0px;background-color:rgba(0,0,0,0.6);text-align:center;line-height:182px;display:none;}
+		.wximag-li-p3 i{font-size:40px;font-weight:bold;color:#fff;}
+		/*选中状态*/
+		.wximag-li-add .wximag-li-p3{display:block;}
+		/*暂无素材*/
+		.wximag-none{text-align:center;line-height:300px;font-size:16px;color:#999;}
+		/*页码*/
+		#wx-page{text-align:right;padding-right:24px;}
+		.layui-laypage a,.layui-laypage span{margin:0px 2px;padding:0 10px;height:26px;line-height:26px;box-sizing:border-box;}
+		.layui-laypage span{height:24px;}
+		.layui-laypage a{border:1px solid #E3E3E3;}
+		.layui-laypage span{border:none;}
+		.layui-laypage .layui-laypage-spr{border:none;}
+		.layui-laypage .layui-laypage-curr .layui-laypage-em{background-color:#44b549;}
+		.layui-laypage a:hover{color:#44b549;}
+		.layui-laypage a .layui-icon{font-size:12px;}
+	</style>
+</head>
+<body>
+<div class="wximag">
+	<div class="wximag-top"><div class="wximag-top-up">上传图片</div><p>图片大小不超过 2M （格式bmp/png/jpg/jpeg/gif）</p></div>
+	<ul class="wximag-ul"></ul>
+	<div id="wx-page"></div>
+</div>
+<!-- 图片列表 -->
+<script id="wximag-html" type="text/html">
+	{{#  layui.each(d.data.item, function(index, item){ }}
+	<li class="wximag-li">
+		<div class="wximag-li-main">
+			<p class="wximag-li-p1"><img src="{{ item.url }}" data-name="{{ item.name }}" data-id="{{ item.media_id }}"></p>
+			<p class="wximag-li-p2 c-hide1">{{ item.name }}</p>
+			<p class="wximag-li-p3"><i class="layui-icon layui-icon-ok"></i></p>
+		</div>
+	</li>
+	{{# }); }}
+</script>
+<script src="__WXJS__/jquery-3.3.1.min.js"></script>
+<script src="__WXlay__/layui.js"></script>
+<script src="__WXJS__/common.js"></script>
+<script type="text/javascript">
+layui.define(['upload','layer','laypage','laytpl'], function(exports){
+	var layer = layui.layer;
+	var laytpl = layui.laytpl;
+	var upload = layui.upload;
+	var laypage = layui.laypage;
+	// 请求图片
+	wximg_pagr(1)
+	function wximg_pagr(curr){
+		Loading() // 加载
+		ajax_none({"type":"image","limit":15,page:curr},'/member/wxcommon/getStyle','post',true,function (result){
+			result = typeof result === 'string' ? $.parseJSON(result) : result;
+			LoadClose() // 关闭加载
+			if( result.code == 1 ){
+				// 图片总数
+				var nums = result.data.total_count
+				// 图片为空时-显示暂无素材
+				if( nums == 0 ){
+					$('.wximag-ul').html('<p class="wximag-none">暂无素材</p>')
+				}else{
+					laytpl($('#wximag-html').html()).render(result, function(html){
+						$('.wximag-ul').html(html);
+					});
+				}
+				// 判断数量是否够分页
+				if( nums <= 15 ){
+					return false;
+				}else{
+					// 分页
+					laypage.render({
+						//注意，这里的 test1 是 ID，不用加 # 号
+						elem: 'wx-page'
+						,count:nums
+						,limit:15
+						,groups:3
+						,curr: curr
+						,layout: ['prev','page','next']
+						,prev:'<i class="layui-icon layui-icon-left"></i>'
+						,next:'<i class="layui-icon layui-icon-right"></i>'
+						,jump: function(obj,first){
+							  //首次不执行
+							if(!first){
+								wximg_pagr(obj.curr);
+							}
+						}
+					});
+				}
+			}else{
+				layer.msg(result.msg,{time:1500})
+			}	
+		});
+	}
+	// 上传图片
+	var uploadInst = upload.render({
+		elem: '.wximag-top-up' //绑定元素
+		,url: '/member/wxcommon/upLoadStyle' //上传接口
+		,accept: 'images'
+		,acceptMime: 'image/bmp,image/png,image/jpg,image/jpeg,image/gif'
+		,size:2048
+		,data: {"type":"image"}
+		// 上传前回调
+		,before: function(obj){
+			Loading() // 加载
+		}
+		// 上传后回调
+		,done: function(res,index,upload){
+			LoadClose() // 关闭加载
+			if( res.code == 1 ){
+				// 重新请求图片列表
+				wximg_pagr(1)
+			}else{
+				layer.msg(res.msg,{time:1500})
+			}
+		}
+		// 上传报错
+		,error: function(){
+			LoadClose() // 关闭加载
+			layer.msg("服务器连接失败");
+		}
+	});
+	// 选中图片
+	$(document).on('click','.wximag-li',function(){
+		if( $(this).hasClass('wximag-li-add') ){
+			$(this).removeClass('wximag-li-add');
+		}else{
+			$('.wximag-li').removeClass('wximag-li-add')
+			$(this).addClass('wximag-li-add');
+		}
+	});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,288 @@
+html,body{width:100%;box-sizing:border-box;position:relative;height:100%;}
+*{margin:0px;padding:0px;font-family: PingFang SC,Helvetica Neue,Helvetica,Arial,Hiragino Sans GB,Microsoft Yahei,\\5FAE\8F6F\96C5\9ED1,STHeiti,\\534E\6587\7EC6\9ED1,sans-serif;}
+ul li{list-style:none;}
+img{max-width:100%;width:auto;vertical-align:middle;}
+a{text-decoration:none;}
+p{margin:0;padding:0;}
+input::-webkit-input-placeholder{color:#ddd;letter-spacing:1px;font-size:16px;}
+input::-moz-input-placeholder{color:#ddd;letter-spacing:1px;font-size:16px;}
+input::-ms-input-placeholder{color:#ddd;letter-spacing:1px;font-size:16px;}
+textarea{resize:none}
+textarea::-webkit-input-placeholder{color:#ddd;letter-spacing:1px;font-size:16px;}
+textarea::-moz-input-placeholder{color:#ddd;letter-spacing:1px;font-size:16px;}
+textarea::-ms-input-placeholder{color:#ddd;letter-spacing:1px;font-size:16px;}
+input,textarea,select,button{outline:none;border:0px;}
+
+/*.la-scroll-bar section::-webkit-scrollbar{width:6px;height:6px;}
+.la-scroll-bar section::-webkit-scrollbar-track {background-color:rgba(0,0,0,0);}
+.la-scroll-bar section::-webkit-scrollbar-thumb{background-color:#dfdfdf;border-radius:5px;}*/
+/*几行隐藏*/
+.c-hide1{display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;text-overflow:ellipsis;overflow:hidden;word-break: break-all;}
+.c-hide2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;text-overflow:ellipsis;overflow:hidden;word-break: break-all;}
+.c-hide3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;text-overflow:ellipsis;overflow:hidden;word-break: break-all;}
+.c-hide4{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;text-overflow:ellipsis;overflow:hidden;word-break: break-all;}
+.c-hide5{display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;text-overflow:ellipsis;overflow:hidden;word-break: break-all;}
+
+
+
+/*头部和尾部*/
+.top{height:40px;width:100%;background-color:#272d2f;}
+.foot{height:160px;width:100%;background-color:#272d2f;}
+.none{display:none}
+.block{display:block}
+
+
+.clearfloat:after{content: " ";display: table;height: 0;clear: both;visibility: hidden;}
+
+
+
+
+/*选择公众号*/
+.choose-wxgzh{height:51px;margin-bottom: 15px;margin-top: -5px;}
+.choose-wxgzh-main{float:right;width:300px;height:50px;border:1px solid #ddd;box-sizing:border-box;border-radius:5px;position:relative;margin-right:20px;}
+/*当前显示*/
+.choose-wxgzh-div{height:48px;line-height:48px;cursor:pointer;border-radius:5px;}
+.choose-wxgzh-div img{float:left;width:34px;margin-top:7px;border-radius:50%;vertical-align:middle;margin-left:10px;}
+.choose-wxgzh-div span{float:left;margin-left:10px;font-size:14px;color:#666;}
+.choose-wxgzh-div i{float:right;line-height:44px;margin-right:15px;font-size:20px;color:#999;}
+.choose-wxgzh-div:hover{background-color:#f9f9f9;}
+/*下拉列表*/
+.choose-wxgzh-list{position:absolute;top:49px;left:0px;background-color:#fff;z-index:5;display:none;padding:3px 0px 0px;box-sizing:border-box;}
+.choose-wxgzh-main:hover .choose-wxgzh-list{display:block;}
+.choose-wxgzh-list ul{width:300px;background-color:#fff;box-shadow:0px 0px 2px #ccc;}
+.choose-wxgzh-list li{height:51px;line-height:50px;cursor:pointer;border-bottom:1px solid #eee;}
+.choose-wxgzh-list li:hover{background-color:#f9f9f9;}
+.choose-wxgzh-list-li1 img{float:left;width:34px;margin-top:8px;border-radius:50%;vertical-align:middle;margin-left:10px;}
+.choose-wxgzh-list-li1 span{float:left;margin-left:10px;font-size:14px;color:#666;}
+.choose-wxgzh-list-li1 i{float:right;line-height:44px;margin-right:15px;font-size:20px;color:#999;}
+.choose-wxgzh-list-li2{text-align:center;}
+.choose-wxgzh-list-li2 i{font-size:18px;color:#999;margin-right:10px;}
+.choose-wxgzh-list-li2 a{color:#666;}
+
+
+/*弹窗底部确定和取消按钮*/
+.layui-layer-btn a{height: 28px;line-height: 28px;margin: 2px 25px 0px;padding: 0 24px;}
+.layui-layer-btn a:hover {opacity: 1;text-decoration: none;background-color: #e6e6e6;}
+.layui-layer-iframe{border-radius:10px;overflow:hidden;}
+.layui-layer-setwin .layui-layer-close2{right: -5px;top: -8px;}
+.layui-layer-iframe .layui-layer-btn{padding:0px 15px 12px;margin-top:-10px;}
+
+
+
+
+
+/*添加链接弹窗*/
+.layui-layer-btn a{height: 28px;line-height: 28px;margin: 2px 25px 0px;padding: 0 24px;}
+.layui-layer-btn a:hover {opacity: 1;text-decoration: none;background-color: #e6e6e6;}
+.layui-layer-iframe{border-radius:10px;overflow:hidden;}
+.layui-layer-setwin .layui-layer-close2{right: -5px;top: -8px;}
+
+
+.layui-layer-msg{overflow:hidden;border-radius:10px;}
+.layui-layer-msg .layui-layer-title{height:40px;line-height:39px;box-sizing: border-box;font-size: 14px;text-align: center}
+.layui-layer-msg .layui-layer-setwin{display: none;}
+.layui-layer-msg .layui-form-item{height:30px;margin-bottom: 20px;}
+.layui-layer-msg .layui-form-label{height:30px;line-height:30px;width:74px;padding:0px;}
+.layui-layer-msg .layui-input-block{height:30px;margin-left:75px;}
+.layui-layer-msg .layui-input-block .layui-input{height:30px;box-sizing: border-box;line-height:28px;}
+.layui-layer-msg .layui-btn{height:30px;line-height:30px;padding:0px 20px;background-color:#44b549;}
+.layui-layer-msg .layui-btn-primary:hover{border-color:#44b549;color:#44b549;}
+.layui-layer-msg .layui-btn-primary{background-color: #fff;color: #555;}
+
+
+
+
+
+/*上传提示信息*/
+.wx-message-voice-tips{position: absolute;bottom: 30px;width: 100%;text-align: center;left: 0px;color: #c0c0c0;}
+
+.layui-layer-iframe .layui-layer-btn{position:relative;z-index:100;margin-top:-20px;}
+.layui-layer-btn a{height:32px;width:104px;font-size:14px;line-height:30px;}
+.layui-layer-iframe .layui-layer-btn .layui-layer-btn0{background-color:#44b549;color:#fff;}
+.layui-layer-btn .layui-layer-btn0:hover{background-color:#2f9833 !important;}
+
+/*左侧导航下拉图标*/
+.self-fa{position: absolute;line-height: 40px !important;right: 30px;top:0px;}
+
+/*上传加载中-金鑫 上传进度条提示**/
+#upload_loading{
+    position:fixed;
+    top:0px;
+    left:0px;
+    bottom:0px;
+    right:0px;
+    background-color:rgba(0,0,0,0.5);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    display: none;
+    z-index: 1000;}
+#upload_loading div.text span{color:#fff;margin-left:20px;}
+#upload_loading .btn{position:absolute;top:50px;right:50px;width:60px;background:green;}
+
+.self-right{position:relative;}
+
+/*自动回复*/
+.self-right-top-tips1{
+    z-index:100;
+    position: absolute;
+    top:50px;
+    left:62px;
+    border-left: 3px solid #44b549;
+    height: 20px;
+    line-height: 19px;
+    padding: 0px 0px 0px 5px;
+    font-size: 14px;
+    color: #666;
+    letter-spacing: 1px;}
+.self-right-top-tips1 a{margin-left:3px;font-size:16px;color: #9A9A9A;}
+.self-right-top-tips1 a i{color:#9a9a9a;margin:0px;padding:0px;}
+/*48小时群发*/
+.self-right-top-tips6{position: absolute;top: 40px;left: 0px;color: #999;font-size: 14px;letter-spacing: 1px;line-height: 24px;}
+.self-right-top-tips6 a{color: #576b95;}
+.self-right-top-tips6 a:hover{border-bottom: 1px solid #576b95;}
+
+
+
+
+
+
+
+
+
+/*自定义菜单模块*/
+/*注释   默认灰色*/
+.menu-ico01{display:inline-block;background-image:url(/static/wxmember/img/menu-icon.png);width:20px;height:21px;background-position:-11px -9px;vertical-align:middle;}
+/*注释   鼠标移入后*/
+.menu-ico02{display:inline-block;background-image:url(/static/wxmember/img/menu-icon.png);width:20px;height:20px;background-position:-48px -10px;vertical-align:middle;}
+/*三角向下*/
+.menu-ico03{display:inline-block;background-image:url(/static/wxmember/img/menu-icon.png);width:10px;height:10px;background-position:-93px -14px;vertical-align:middle;}
+/*三角向右*/
+.menu-ico04{display:inline-block;background-image:url(/static/wxmember/img/menu-icon.png);width:10px;height:10px;background-position:-132px -15px;vertical-align:middle;}
+/*加号  蓝色*/
+.menu-ico05{display:inline-block;background-image:url(/static/wxmember/img/menu-icon.png);width:14px;height:14px;background-position:-169px -14px;vertical-align:middle;}
+/*取消 红色*/
+.menu-ico06{display:inline-block;background-image:url(/static/wxmember/img/menu-icon.png);width:14px;height:14px;background-position:-209px -14px;vertical-align:middle;}
+/*箭头向上 蓝色*/
+.menu-ico07{display:inline-block;background-image:url(/static/wxmember/img/menu-icon.png);width:13px;height:17px;background-position:-248px -12px;vertical-align:middle;}
+/*箭头向下 蓝色*/
+.menu-ico08{display:inline-block;background-image:url(/static/wxmember/img/menu-icon.png);width:13px;height:17px;background-position:-287px -12px;vertical-align:middle;}
+/*表情笑脸 灰色*/
+.menu-ico09{display:inline-block;background-image:url(/static/wxmember/img/menu-icon.png);width:21px;height:22px;background-position:-361px -9px;vertical-align:middle;}
+/*图文 灰色*/
+.menu-ico10{display:inline-block;background-image:url(/static/wxmember/img/menu-icon.png);width:18px;height:17px;background-position:-401px -12px;vertical-align:middle;}
+/*图文 蓝色*/
+.menu-ico11{display:inline-block;background-image:url(/static/wxmember/img/menu-icon.png);width:18px;height:17px;background-position:-440px -12px;vertical-align:middle;}
+/*文字 灰色*/
+.menu-ico12{display:inline-block;background-image:url(/static/wxmember/img/menu-icon.png);width:15px;height:14px;background-position:-481px -13px;vertical-align:middle;}
+/*文字 蓝色*/
+.menu-ico13{display:inline-block;background-image:url(/static/wxmember/img/menu-icon.png);width:15px;height:14px;background-position:-13px -52px;vertical-align:middle;}
+/*图片小图  灰色*/
+.menu-ico14{display:inline-block;background-image:url(/static/wxmember/img/menu-icon.png);width:15px;height:16px;background-position:-52px -52px;vertical-align:middle;}
+/*图片小图  蓝色*/
+.menu-ico15{display:inline-block;background-image:url(/static/wxmember/img/menu-icon.png);width:15px;height:16px;background-position:-91px -52px;vertical-align:middle;}
+/*语音 灰色*/
+.menu-ico16{display:inline-block;background-image:url(/static/wxmember/img/menu-icon.png);width:14px;height:19px;background-position:-130px -50px;vertical-align:middle;}
+/*语音 蓝色*/
+.menu-ico17{display:inline-block;background-image:url(/static/wxmember/img/menu-icon.png);width:14px;height:19px;background-position:-169px -50px;vertical-align:middle;}
+/*信息 灰色*/
+.menu-ico18{display:inline-block;background-image:url(/static/wxmember/img/menu-icon.png);width:17px;height:13px;background-position:-207px -53px;vertical-align:middle;}
+/*信息 蓝色*/
+.menu-ico19{display:inline-block;background-image:url(/static/wxmember/img/menu-icon.png);width:17px;height:13px;background-position:-246px -53px;vertical-align:middle;}
+/*选择框 白色*/
+.menu-ico20{display:inline-block;background-image:url(/static/wxmember/img/menu-icon.png);width:19px;height:18px;background-position:-284px -51px;vertical-align:middle;}
+/*选择框选中 蓝色*/
+.menu-ico21{display:inline-block;background-image:url(/static/wxmember/img/menu-icon.png);width:18px;height:18px;background-position:-323px -50px;vertical-align:middle;}
+/*替换 灰色*/
+.menu-ico22{display:inline-block;background-image:url(/static/wxmember/img/menu-icon.png);width:18px;height:19px;background-position:-402px -50px;vertical-align:middle;}
+/*链接 灰色*/
+.menu-ico23{display:inline-block;background-image:url(/static/wxmember/img/menu-icon.png);width:20px;height:20px;background-position:-439px -49px;vertical-align:middle;}
+ /*取消链接 灰色*/
+.menu-ico24{display:inline-block;background-image:url(/static/wxmember/img/menu-icon.png);width:19px;height:20px;background-position:-480px -50px;vertical-align:middle;}
+/*语音播放小图  蓝色*/
+.menu-ico25{display:inline-block;background-image:url(/static/wxmember/img/menu-icon.png);width:34px;height:34px;background-position:-3px -81px;vertical-align:middle;}
+/*文件夹  蓝色*/
+.menu-ico26{display:inline-block;background-image:url(/static/wxmember/img/menu-icon.png);width:48px;height:41px;background-position:-16px -133px;vertical-align:middle;}
+/*文件夹  灰色*/
+.menu-ico27{display:inline-block;background-image:url(/static/wxmember/img/menu-icon.png);width:48px;height:41px;background-position:-95px -133px;vertical-align:middle;}
+/*图片大图  灰色*/
+.menu-ico28{display:inline-block;background-image:url(/static/wxmember/img/menu-icon.png);width:49px;height:43px;background-position:-173px -132px;vertical-align:middle;}
+/*图片大图  蓝色*/
+.menu-ico29{display:inline-block;background-image:url(/static/wxmember/img/menu-icon.png);width:49px;height:43px;background-position:-252px -132px;vertical-align:middle;}
+/*语音播放大图  蓝色*/
+.menu-ico30{display:inline-block;background-image:url(/static/wxmember/img/menu-icon.png);width:47px;height:44px;background-position:-329px -132px;vertical-align:middle;}
+/*语音播放大图  灰色*/
+.menu-ico31{display:inline-block;background-image:url(/static/wxmember/img/menu-icon.png);width:47px;height:44px;background-position:-406px -132px;vertical-align:middle;}
+
+
+
+
+/*自动回复模块*/
+    /*注释   默认灰色*/ 
+    .auto-cicon01{display:inline-block;background-image:url(/static/wxmember/img/autoreply.png);width:21px;height:21px;background-position:-10px -9px;vertical-align:middle;}
+    /*注释   鼠标移入*/
+    .auto-cicon02{display:inline-block;background-image:url(/static/wxmember/img/autoreply.png);width:20px;height:21px;background-position:-49px -10px;vertical-align:middle;}
+    /*大三角向下   灰色*/
+    .auto-cicon03{display:inline-block;background-image:url(/static/wxmember/img/autoreply.png);width:17px;height:12px;background-position:-89px -14px;vertical-align:middle;}
+    /*大三角向下  蓝色*/
+    .auto-cicon04{display:inline-block;background-image:url(/static/wxmember/img/autoreply.png);width:17px;height:12px;background-position:-129px -14px;vertical-align:middle;}
+    /*搜索  灰色*/
+    .auto-cicon05{display:inline-block;background-image:url(/static/wxmember/img/autoreply.png);width:19px;height:19px;background-position:-167px -11px;vertical-align:middle;}
+    /*搜索  蓝色*/
+    .auto-cicon06{display:inline-block;background-image:url(/static/wxmember/img/autoreply.png);width:19px;height:19px;background-position:-206px -11px;vertical-align:middle;}
+    /*选择框  白色*/
+    .auto-cicon07{display:inline-block;background-image:url(/static/wxmember/img/autoreply.png);width:23px;height:22px;background-position:-243px -9px;vertical-align:middle;}
+    /*选择框  蓝色*/
+    .auto-cicon08{display:inline-block;background-image:url(/static/wxmember/img/autoreply.png);width:23px;height:22px;background-position:-282px -9px;vertical-align:middle;}
+    /*加号  灰色*/
+    .auto-cicon09{display:inline-block;background-image:url(/static/wxmember/img/autoreply.png);width:27px;height:26px;background-position:-319px -7px;vertical-align:middle;}
+    /*加号  深灰色*/
+    .auto-cicon10{display:inline-block;background-image:url(/static/wxmember/img/autoreply.png);width:27px;height:26px;background-position:-358px -7px;vertical-align:middle;}
+    /*减号  灰色*/
+    .auto-cicon11{display:inline-block;background-image:url(/static/wxmember/img/autoreply.png);width:27px;height:26px;background-position:-397px -7px;vertical-align:middle;}
+    /*小三角向右  蓝色*/
+    .auto-cicon12{display:inline-block;background-image:url(/static/wxmember/img/autoreply.png);width:11px;height:11px;background-position:-483px -14px;vertical-align:middle;}
+    /*小三角向下  蓝色*/
+    .auto-cicon13{display:inline-block;background-image:url(/static/wxmember/img/autoreply.png);width:11px;height:11px;background-position:-14px -54px;vertical-align:middle;}
+    /*图文  灰色*/
+    .auto-cicon14{display:inline-block;background-image:url(/static/wxmember/img/autoreply.png);width:18px;height:18px;background-position:-50px -51px;vertical-align:middle;}
+    /*图文  蓝色*/
+    .auto-cicon15{display:inline-block;background-image:url(/static/wxmember/img/autoreply.png);width:18px;height:18px;background-position:-92px -51px;vertical-align:middle;}
+    /*文本  灰色*/
+    .auto-cicon16{display:inline-block;background-image:url(/static/wxmember/img/autoreply.png);width:12px;height:16px;background-position:-131px -51px;vertical-align:middle;}
+    /*文本  蓝色*/
+    .auto-cicon17{display:inline-block;background-image:url(/static/wxmember/img/autoreply.png);width:12px;height:16px;background-position:-170px -51px;vertical-align:middle;}
+    /*图片  灰色*/
+    .auto-cicon18{display:inline-block;background-image:url(/static/wxmember/img/autoreply.png);width:15px;height:15px;background-position:-208px -52px;vertical-align:middle;}
+    /*图片  蓝色*/
+    .auto-cicon19{display:inline-block;background-image:url(/static/wxmember/img/autoreply.png);width:15px;height:15px;background-position:-247px -52px;vertical-align:middle;}
+    /*语音  灰色*/
+    .auto-cicon20{display:inline-block;background-image:url(/static/wxmember/img/autoreply.png);width:15px;height:18px;background-position:-286px -51px;vertical-align:middle;}
+    /*语音  蓝色*/
+    .auto-cicon21{display:inline-block;background-image:url(/static/wxmember/img/autoreply.png);width:15px;height:18px;background-position:-325px -51px;vertical-align:middle;}
+    /*加号  白色*/
+    .auto-cicon22{display:inline-block;background-image:url(/static/wxmember/img/autoreply.png);width:18px;height:18px;background-position:-363px -51px;vertical-align:middle;}
+    /*语音播放  蓝色*/
+    .auto-cicon23{display:inline-block;background-image:url(/static/wxmember/img/autoreply.png);width:34px;height:34px;background-position:-394px -43px;vertical-align:middle;}
+    /*编辑  灰色*/
+    .auto-cicon24{display:inline-block;background-image:url(/static/wxmember/img/autoreply.png);width:22px;height:22px;background-position:-438px -50px;vertical-align:middle;}
+    /*删除  灰色*/
+    .auto-cicon25{display:inline-block;background-image:url(/static/wxmember/img/autoreply.png);width:22px;height:22px;background-position:-477px -50px;vertical-align:middle;}
+    /*微笑表情  灰色*/
+    .auto-cicon26{display:inline-block;background-image:url(/static/wxmember/img/autoreply.png);width:23px;height:22px;background-position:-9px -87px;vertical-align:middle;}
+    /*链接  灰色*/
+    .auto-cicon27{display:inline-block;background-image:url(/static/wxmember/img/autoreply.png);width:20px;height:21px;background-position:-51px -88px;vertical-align:middle;}
+    /*取消链接  灰色*/
+    .auto-cicon28{display:inline-block;background-image:url(/static/wxmember/img/autoreply.png);width:20px;height:21px;background-position:-88px -88px;vertical-align:middle;}
+    /*减号（大）  红色*/
+    .auto-cicon29{display:inline-block;background-image:url(/static/wxmember/img/autoreply.png);width:28px;height:28px;background-position:-123px -85px;vertical-align:middle;}
+
+/*加载样式*/
+.a-load{position: fixed;top: 0px;left: 0px;right: 0px;bottom: 0px;z-index:20191014;background-color: rgba(255, 255, 255, 0.3);}
+.a-load i{position:absolute;top:50%;left:50%;margin-top:-20px;margin-left:-20px;width:40px;height:40px;text-align:center;line-height:40px;font-size:36px;color:#999;}
+
+
+
+
+
+

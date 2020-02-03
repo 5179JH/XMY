@@ -1,0 +1,220 @@
+{extend name="user/index" /}
+{block name="memberRight"}
+<link rel="stylesheet" href="__WXCSS__/base.css?var=123"/>
+<link rel="stylesheet" href="__WXCSS__/font-awesome.css"/>
+<link rel="stylesheet" href="__WXCSS__/iconfont.css">
+<link rel="stylesheet" href="__WXlay__/css/layui.css">
+<link rel="stylesheet" href="__WXCSS__/wxmenu.css">
+<!-- 右侧部分 -->
+<div class="self-right wkzc-index" style="display: block;">
+	<!-- 顶部提示信息 -->
+	<div class="self-right-top-tips1" style="left:40px;">支持认证订阅号，所有服务号<a href="/help/362.html" target="_blank"><i class="fa fa-question-circle"></i></a></div>
+	<!-- 选择公众号 -->
+	<div class="choose-wxgzh">
+        <div class="choose-wxgzh-main" style="margin-right:0px;">
+            <div class="choose-wxgzh-div">
+                <img src="{$selected_wechat_info.avatar}">
+                <span>{$selected_wechat_info.nickname}</span>
+                <i class="fa fa-caret-down" aria-hidden="true"></i>
+            </div>
+            <div class="choose-wxgzh-list">
+                <ul>
+                    {volist name="wechat_lists" id="vo"}
+                    <li class="choose-wxgzh-list-li1" data-id="{$vo.id}">
+                        <img src="{$vo.avatar}">
+                        <span>{$vo.nickname}</span>
+                    </li>
+                    {/volist}
+                    <li class="choose-wxgzh-list-li2"><i class="fa fa-plus-circle"></i><a href="{:url('member/wxmanage/wxaccredit')}" target="_blank">添加公众号</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- 顶部提示语 -->
+    <div class="wxc-top">自定义菜单</div>
+    <!-- 菜单内容部分 -->
+    <div class="wxc">
+    	<!-- 左侧菜单部分 -->
+    	<div class="wxcL">
+    		<div class="wxcL-all"><i class="fa fa-plus"></i>添加菜单</div>
+    		<div class="wxcL-nav"></div>
+    		<div class="wxcL-view">预览</div>
+    	</div>
+    	<!-- 右侧展示部分 -->
+    	<div class="wxcR">
+            <div class="wxcR-name" data-num="1">
+                <p class="wxcR-name-p1">菜单名称：</p>
+                <p class="wxcR-name-p2"><input type="text" class="layui-input"></p>
+                <p class="wxcR-name-p3"><i class="fa fa-smile-o"></i></p>
+                <p class="wxcR-name-p4">子菜单字数不超过20个汉字或40个字母</p>
+            </div>
+            <div class="wxcR-body" data-type="">
+                <!-- 选择发送消息、跳转网页 -->
+                <div class="wxcR-chose">
+                    <p class="wxcR-chose-p1">菜单内容：</p>
+                    <form class="layui-form">
+                        <div class="wxcR-chose-d1"><input type="radio" name="wxcRChoseName" title="发送消息" lay-filter="wxcRChoseRadio1" checked></div>
+                        <div class="wxcR-chose-d2"><input type="radio" name="wxcRChoseName" title="跳转网页" lay-filter="wxcRChoseRadio2"></div>
+                    </form>
+                </div>
+                <!-- 发送消息 -->
+                <div class="wxcR-type">
+                    <ul class="wxcR-nav">
+                        <li class="wxcR-nav-add"><i class="menu-ico10"></i><i class="menu-ico11"></i>图文消息</li>
+                        <li class=""><i class="menu-ico12"></i><i class="menu-ico13"></i>文字</li>
+                        <li class=""><i class="menu-ico14"></i><i class="menu-ico15"></i>图片</li>
+                        <li class=""><i class="menu-ico16"></i><i class="menu-ico17"></i>语音</li>
+                        <li class=""><i class="menu-ico18"></i><i class="menu-ico19"></i>关键词回复</li>
+                    </ul>
+                    <ul class="wxcR-con">
+                        <!-- 选择图文 -->
+                        <li class="wxcR-act">
+                            <div class="wxcR-act-chose">
+                                <div class="wxcR-act-chose-pop">
+                                    <p class="p1"><i class="menu-ico27"></i></p>
+                                    <p class="p2">从素材库选择</p>
+                                </div>
+                            </div>
+                            <div class="wxcR-act-show" style="display:none;"><div class="wxcR-act-show-main"></div></div>
+                        </li>
+                        <!-- 文字 -->
+                        <li class="wxcR-txt" style="display:none;">
+                            <div class="wxeditor1-main">
+                                <textarea id="wxeditor10"></textarea>
+                                <p class="wxeditor-tips"><span>还可以输入230字</span>，按下Enter键换行</p>
+                            </div>
+                        </li>
+                        <!-- 图片 -->
+                        <li class="wxcR-img" style="display:none;">
+                            <div class="wxcR-img-chose">
+                                <div class="wxcR-img-left">
+                                    <p class="p1"><i class="menu-ico27"></i></p>
+                                    <p class="p2">从素材库选择</p>
+                                </div>
+                                <div class="wxcR-img-right">
+                                    <p class="p1"><i class="menu-ico28"></i></p>
+                                    <p class="p2">上传图片</p>
+                                </div>
+                            </div>
+                            <div class="wxcR-img-show" style="display:none;"><div class="wxcR-img-show-img"></div></div>
+                        </li>
+                        <!-- 语音 -->
+                        <li class="wxcR-voc" style="display:none;">
+                            <div class="wxcR-voc-chose">
+                                <div class="wxcR-voc-left">
+                                    <p class="p1"><i class="menu-ico27"></i></p>
+                                    <p class="p2">从素材库选择</p>
+                                </div>
+                                <div class="wxcR-voc-right">
+                                    <p class="p1"><i class="menu-ico31"></i></p>
+                                    <p class="p2">上传语音</p>
+                                </div>
+                            </div>
+                            <div class="wxcR-voc-show" style="display:none;"></div>
+                        </li>
+                        <!-- 关键词 -->
+                        <li class="wxcR-key" style="display:none;" data-key="">
+                            <form class="layui-form">
+                                <div class="wxcR-key-top">
+                                    <div class="wxcR-key-grop">
+                                        <select lay-filter="wxcR-key-select" class="wxcR-key-sel"></select>
+                                    </div>
+                                    <p class="c-btn wxcR-key-btn"><a href="../wxreply/wxwords.html">新增回复</a></p>
+                                </div>
+                                <p class="wxcR-key-tit"><span>选择</span><span>关键词</span><span>回复内容</span></p>
+                                <ul class="wxcR-key-ul"></ul>
+                                <p class="wxcR-key-none" style="display:none;">暂无关键词</p>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 跳转网页 -->
+                <div class="wxcR-url" style="display:none;">
+                    <p class="wxcR-url-titl">订阅者点击该子菜单会跳转到以下链接</p>
+                    <p class="wxcR-url-iput"><span>页面地址：</span><input type="text" name="" class="layui-input"></p>
+                    <p class="wxcR-url-tips">从公众号图文消息中选择</p>
+                </div>
+            </div>
+            <!-- 保存时间、发布时间 -->
+            <div class="wxcR-time">
+                <span class="layui-icon layui-icon-log sp1"></span>
+                <span class="sp2">最后保存时间:</span>
+                <span class="sp3"></span>
+                <span class="layui-icon layui-icon-log sp4"></span>
+                <span class="sp5">最后发布时间:</span>
+                <span class="sp6"></span>
+                <span class="sp7">( 先保存，后发布，发布时间应晚于保存时间 )</span>
+            </div>
+            <!-- 保存按钮 -->
+            <div class="wxcR-foot">
+                <p class="wxcR-foot-sure">保存</p>
+                <p class="wxcR-foot-rele">发布</p>
+            </div>
+        </div>
+    	<!-- 清除浮动 -->
+		<div class="c-lear"></div>
+    </div>
+    <!-- 暂无菜单 -->
+    <div class="wxc-none" style="display:none;">
+        <img src="http://alstyle.xmyeditor.com/sucai-png/20181221/5c1cc170e7373bqtsqdttsk.ndivutvrbuguonwtpgtsssiuomlgbe">
+        <div class="wxc-none-main">
+            <p class="wxc-none-p1">你尚未添加任何菜单</p>
+            <p class="wxc-none-p2"><i class="layui-icon layui-icon-add-1"></i>添加菜单</p>
+        </div>
+    </div>
+
+
+
+
+
+<!-- 添加主菜单 -->
+<script id="wxcL-a-html" type="text/html">
+	<div class="wxcL-one">
+		<div class="wxcL-a">
+			<p class="wxcL-a-p1 c-hide1 wxcL-sign wxcL-add" data-grad='1' data-info='{"act_dec":"","act_img":"","act_name":"","act_url":"","id":"1","media_id":"","name":"主菜单","content_type":"news"}' data-tpye="1">主菜单</p>
+			<p class="wxcL-a-p2" style="display:none;"><i class="fa fa-caret-down"></i></p>
+			<p class="wxcL-a-p3"><i class="fa fa-plus"></i></p>
+			<p class="wxcL-a-p4"><i class="fa fa-remove"></i></p>
+		</div>
+		<ul class="wxcL-a-ul"></ul>
+	</div>
+</script>
+<!-- 添加子菜单 -->
+<script id="wxcL-b-html" type="text/html">
+    <li class="wxcL-b">
+        <p class="wxcL-b-p1 c-hide1 wxcL-sign wxcL-add" data-grad='2' data-info='{"act_dec":"","act_img":"","act_name":"","act_url":"","id":"1","media_id":"","name":"子菜单","content_type":"news"}' data-tpye="1">子菜单</p>
+        <p class="wxcL-b-p2"><i class="fa fa-remove"></i></p>
+    </li>
+</script>
+<!-- 关键词列表 -->
+<script id="wxcR-key-html" type="text/html">
+    {{#  layui.each(d, function(index, item){ }}
+        {{# if( $('.wxcR-key').attr("data-key") == item.id ){ }}
+        <li class="wxcR-key-li wxcR-key-li-add" data-id="{{ item.id }}">
+        {{# }else{ }}
+        <li class="wxcR-key-li" data-id="{{ item.id }}">
+            {{# } }}
+            <p><span class="wxcR-key-chose"><i class="layui-icon layui-icon-ok"></i></span></p>
+            <p>{{ item.key_html }}</p>
+            <p>{{ item.num_txt }}</p>
+        </li>
+    {{# }); }}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="__WXlay__/layui.js"></script>
+<script src="__WXJS__/jqueryui.js"></script>
+<script src="__WXJS__/common.js"></script>
+<script src="__WXJS__/wxmenu.js"></script>
+{/block}
+{block name="memberJs"}

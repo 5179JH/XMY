@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  	<meta charset="utf-8">
+  	<title>水熊虫投票系统</title>
+  	<meta name="renderer" content="webkit">
+  	<meta name="referrer" content="never">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link rel="stylesheet" href="__WXCSS__/font-awesome.css"/>
+	<link rel="stylesheet" href="__WXlay__/css/layui.css">
+	<link rel="stylesheet" href="__WXCSS__/base.css?var=123"/>
+  	<style>
+		.art-main{width:890px;padding:20px;margin:0px auto;box-sizing:border-box;height:450px;overflow-y:auto;}
+		.art-main::-webkit-scrollbar{width:6px;height:6px;}
+		.art-main::-webkit-scrollbar-track {background-color:rgba(0,0,0,0);}
+		.art-main::-webkit-scrollbar-thumb{background-color:#dfdfdf;}
+		/*容器*/
+		.art-ul{-moz-column-count: 3;-webkit-column-count: 3;column-count: 3;}
+		/*列表*/
+		.art-li{padding:5px 0 0;box-sizing:border-box;float:left;margin-bottom:16px;
+			-moz-page-break-inside: avoid;-webkit-column-break-inside: avoid;width:264px;position:relative;cursor:pointer;}
+		/*单图文*/
+		.art-sole{box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);padding:10px;box-sizing:border-box;position:relative;font-size:14px;}
+		.art-sole-tit{color:#353535;line-height:1.2;word-break:break-all;width:100%;text-align:justify;}
+		.art-sole-img{width:100%;height:auto;background-size:cover;background-position:50% 50%;background-repeat:no-repeat;padding-bottom:56.25%;margin-top:10px;}
+		.art-sole-ary{color:#9a9a9a;margin-top:12px;word-break:break-all;width:100%;text-align:justify;}
+		.art-lnk{display:none;}
+		/*多图文*/
+		.art-more-a{position:relative;color:#fff;letter-spacing:0;padding-bottom:10px;}
+		.art-more-a-img{width:100%;height:auto;background-size:cover;background-position:50% 50%;background-repeat:no-repeat;background-color:#F6F8F9;padding-bottom:56.25%;}
+		.art-more-a-tit{position:absolute;bottom:10px;left:0px;right:0px;background-color:rgba(0,0,0,0.55);padding:6px;box-sizing:border-box;line-height:1.2;}
+		.art-more-b{height:84px;padding:12px 0;box-sizing:border-box;border-top:1px solid #e3e3e3;position:relative;}
+		.art-more-b-tit{float:left;width:180px;font-size:14px;line-height:20px;}
+		.art-more-b-img{float:right;width:60px;}
+		.art-more-b-img img{width:100%;height:60px;}
+		/*无素材*/
+		.waterfall-none{line-height:300px;font-size:16px;color:#999;text-align:center;width:100%;position:absolute;top:0px;height:300px;left:0px;}
+		/*蒙层*/
+		.art-film{position:absolute;top:0px;right:0px;bottom:0px;left:0;background-color:rgba(0,0,0,0.55);}
+		.art-film span{position:absolute;width:40px;height:40px;line-height:40px;text-align:center;top:50%;left:50%;margin-top:-20px;margin-left:-20px;display:none;}
+		.art-film span i{font-size:30px;color:#fff;}
+		.art-li:hover .art-film{display:block !important;}
+		.art-film-add span{display:block;}
+		.art-film-add .art-film{display:block !important;}
+		/*分页*/
+		#art-page{text-align:right;width:800px;margin:0 auto;}
+		.layui-laypage a,.layui-laypage span{margin:0px 2px;padding:0 10px;height:26px;line-height:26px;box-sizing:border-box;}
+		.layui-laypage span{height:24px;}
+		.layui-laypage a{border:1px solid #E3E3E3;}
+		.layui-laypage span{border:none;}
+		.layui-laypage .layui-laypage-spr{border:none;}
+		.layui-laypage .layui-laypage-curr .layui-laypage-em{background-color:#44b549;}
+		.layui-laypage a:hover{color:#44b549;}
+		.layui-laypage a .layui-icon{font-size:12px;}
+	</style>
+</head>
+<body>
+
+	<!--图文弹窗-->
+	<div class="art-main"><ul class="art-ul"></ul></div>
+	<div id="art-page"></div>
+
+<script id="art" type="text/html">
+	{{#  layui.each(d.data.item, function(index, item){ }}
+	{{# if( item.content.news_item.length >= 2 ){ }}
+	<li class="art-li" data-id="{{ item.media_id }}">
+		<div class="art-sole" data-id="{{ item.media_id }}" data-url="{{ item.content.news_item[0].url }}" data-dec="{{ item.content.news_item[0].digest }}" data-name="{{ item.content.news_item[0].title }}" data-img="{{ item.content.news_item[0].thumb_url }}">
+			<div class="art-more-a">
+				<p class="art-more-a-tit">{{ item.content.news_item[0].title }}</p>
+				<p class="art-more-a-img" style="background-image:url({{ item.content.news_item[0].thumb_url }});"></p>
+				<a class="art-lnk" href="{{ item.content.news_item[0].url }}" target="_blank"><span>预览文章</span></a>
+			</div>
+			{{# for( var i=1 ; i < item.content.news_item.length ; i++ ){ }}
+			<div class="art-more-b">
+				<p class="art-more-b-img"><img src="{{ item.content.news_item[i].thumb_url }}"></p>
+				<p class="art-more-b-tit c-hide3">{{ item.content.news_item[i].title }}</p>
+				<a class="art-lnk" href="{{ item.content.news_item[i].url }}" target="_blank"><span>预览文章</span></a>
+			</div>
+			{{# } }}
+		</div>
+		<p class="art-film" style="display:none;"><span><i class="layui-icon layui-icon-ok"></i></span></p>
+	</li>
+	{{# }else{ }}
+	<li class="art-li" data-id="{{ item.media_id }}">
+		<div class="art-sole" data-id="{{ item.media_id }}" data-url="{{ item.content.news_item[0].url }}" data-dec="{{ item.content.news_item[0].digest }}" data-name="{{ item.content.news_item[0].title }}" data-img="{{ item.content.news_item[0].thumb_url }}">
+			<p class="art-sole-tit">{{ item.content.news_item[0].title }}</p>
+			<p class="art-sole-img" style="background-image:url({{ item.content.news_item[0].thumb_url }});" data-id="{{ item.content.news_item[0].thumb_media_id }}"></p>
+			<p class="art-sole-ary">{{ item.content.news_item[0].digest }}</p>
+			<a class="art-lnk" href="{{ item.content.news_item[0].url }}" target="_blank"><span>预览文章</span></a>
+		</div>
+		<p class="art-film" style="display:none;"><span><i class="layui-icon layui-icon-ok"></i></span></p>
+	</li>
+	{{# } }}
+	{{#  }); }}
+</script>
+<script src="__WXJS__/jquery-3.3.1.min.js"></script>
+<script src="__WXlay__/layui.js"></script>
+<script src="__WXJS__/common.js"></script>
+<script>
+layui.use(['layer','laypage','laytpl'], function(exports){
+	var layer = layui.layer;
+	var laypage = layui.laypage;
+	var laytpl = layui.laytpl;
+	// 请求微信图文列表
+	wxact_page(1)
+	function wxact_page(curr){
+		Loading() // 加载
+		ajax_none({"type":"news","limit":15,page:curr},'/member/wxcommon/getStyle','post',true,function (result) {
+			LoadClose() // 关闭加载
+			result = typeof result === 'string' ? $.parseJSON(result) : result;
+			if(result.code == 1){
+				// 文章总数
+				var nums = result.data.total_count;
+				// 文章为空时-显示暂无素材
+				if( nums == 0 ){
+					$('.art-ul').html('<p class="waterfall-none">暂无素材</p>');
+				}else{
+					laytpl($('#art').html()).render(result, function(html){
+						$('.art-ul').html(html)
+					});
+				}
+				// 文章小于15时-不显示分页
+				if( nums <= 15 ){
+					return false;
+				}else{
+					// 分页
+					laypage.render({
+						elem: 'art-page',
+						count:nums,
+						limit:15,
+						groups:3,
+						curr: curr,
+						layout: ['prev','page','next'],
+						prev:'<i class="layui-icon layui-icon-left"></i>',
+						next:'<i class="layui-icon layui-icon-right"></i>',
+						jump: function(obj,first){
+							if(!first){
+								wxact_page(obj.curr);
+							}
+						}
+					});
+				}
+			}else{
+				layer.msg(result.msg,{time:1500});
+			}
+		});
+	}
+	// 选择图文
+	$(document).on('click', '.art-li', function() {
+		if( $(this).hasClass('art-film-add') ){
+			$(this).removeClass('art-film-add');
+		}else{
+			$('.art-li').removeClass('art-film-add')
+			$(this).addClass('art-film-add');
+		}
+	});
+})
+</script>
+</body>
+</html>
