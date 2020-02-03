@@ -1,0 +1,84 @@
+body,
+html {
+	height: 100%;
+	width: 100%;
+	position: relative;
+	background-color: #fff;
+}
+
+body {
+	overflow: auto;
+}
+
+* {
+	font-family: PingFang SC, Helvetica Neue, Helvetica, Arial, Hiragino Sans GB, Microsoft Yahei, \\5FAE\8F6F\96C5\9ED1, STHeiti, \\534E\6587\7EC6\9ED1, sans-serif;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+ul li {
+	list-style: none;
+}
+
+img {
+	max-width: 100%;
+	width: auto;
+	vertical-align: middle;
+}
+
+a {
+	text-decoration: none;
+}
+
+input::-webkit-input-placeholder {
+	color: #bbb;
+	letter-spacing: 1px;
+	font-size: 14px;
+}
+
+input::-moz-input-placeholder {
+	color: #bbb;
+	letter-spacing: 1px;
+	font-size: 14px;
+}
+
+input::-ms-input-placeholder {
+	color: #bbb;
+	letter-spacing: 1px;
+	font-size: 14px;
+}
+
+textarea {
+	resize: none;
+}
+
+textarea::-webkit-input-placeholder {
+	color: #bbb;
+	letter-spacing: 1px;
+	font-size: 14px;
+}
+
+textarea::-moz-input-placeholder {
+	color: #bbb;
+	letter-spacing: 1px;
+	font-size: 14px;
+}
+
+textarea::-ms-input-placeholder {
+	color: #bbb;
+	letter-spacing: 1px;
+	font-size: 14px;
+}
+
+input,
+textarea,
+select,
+button {
+	outline: none;
+	border: 0;
+	box-sizing: border-box;
+}
