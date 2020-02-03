@@ -1,0 +1,71 @@
+/*清除元素默认的内外边距  */
+* {
+	margin: 0;
+	padding: 0;
+	font-family: PingFang SC, Helvetica Neue, Helvetica, Arial, Hiragino Sans GB, Microsoft Yahei, \\5FAE\8F6F\96C5\9ED1, STHeiti, \\534E\6587\7EC6\9ED1, sans-serif;
+	word-wrap: break-word;
+}
+
+/*让所有斜体 不倾斜*/
+em,
+i {
+	font-style: normal;
+}
+
+/*去掉列表前面的小点*/
+li {
+	list-style: none;
+}
+
+/*图片没有边框   去掉图片底侧的空白缝隙*/
+img {
+	border: 0;
+	/*ie6*/
+	vertical-align: middle;
+}
+
+/*让button 按钮 变成小手*/
+button {
+	cursor: pointer;
+}
+
+/*取消链接的下划线*/
+a {
+	color: #fff;
+	text-decoration: none;
+}
+
+/* button input 标签内用样式 */
+button,
+input {
+	outline: none;
+	border: 0;
+}
+
+/* hide none 类隐藏 */
+.hide,
+.none {
+	display: none;
+}
+
+/*清除浮动*/
+.clearfix:after {
+	visibility: hidden;
+	clear: both;
+	display: block;
+	content: ".";
+	height: 0
+}
+
+.clearfix {
+	*zoom: 1;
+}
+
+@font-face {
+	font-family: 'iconfont';
+	src: url('../fonts/iconfont.eot');
+	src: url('../fonts/iconfont.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/iconfont.woff') format('woff'),
+		url('../fonts/iconfont.ttf') format('truetype'),
+		url('../fonts/iconfont.svg#iconfont') format('svg');
+}

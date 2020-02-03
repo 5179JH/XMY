@@ -1,0 +1,65 @@
+{
+  "id": "1600216",
+  "name": "xmy",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "122163",
+      "name": "笑脸",
+      "font_class": "smiling",
+      "unicode": "e63f",
+      "unicode_decimal": 58943
+    },
+    {
+      "icon_id": "657538",
+      "name": "分期－通用",
+      "font_class": "tongyong",
+      "unicode": "e65a",
+      "unicode_decimal": 58970
+    },
+    {
+      "icon_id": "1235390",
+      "name": "小喇叭",
+      "font_class": "xiaolaba",
+      "unicode": "e64c",
+      "unicode_decimal": 58956
+    },
+    {
+      "icon_id": "2325705",
+      "name": "点赞",
+      "font_class": "dianzan",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "2402040",
+      "name": "箭头",
+      "font_class": "jiantou",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "5203287",
+      "name": "旗帜",
+      "font_class": "qizhi",
+      "unicode": "e630",
+      "unicode_decimal": 58928
+    },
+    {
+      "icon_id": "8152442",
+      "name": "全部信号",
+      "font_class": "quanbuxinhao",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "10477215",
+      "name": "全文借阅",
+      "font_class": "quanwenjieyue",
+      "unicode": "e645",
+      "unicode_decimal": 58949
+    }
+  ]
+}

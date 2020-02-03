@@ -1,0 +1,697 @@
+body {
+	background: url(http://server.xmyeditor.com/xmyweb/20190308/890f55fd3786f4b3cd51370ef6bc85f8.png);
+}
+
+/* 头部开始 */
+.header {
+	position: relative;
+	top: 0;
+	left: 0;
+	background-color: #272d2f;
+	text-align: center;
+	color: #ddd;
+	font-size: 12px;
+	letter-spacing: 1px;
+	height: 40px;
+	line-height: 40px;
+}
+
+.header a {
+	color: #fff;
+}
+
+/* 头部左侧 */
+.header_left {
+	width: 450px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	overflow: hidden;
+}
+
+/* 头部logo */
+.header_logo a {
+	float: left;
+	width: 150px;
+	height: 24px;
+	background: url('http://www.xmyeditor.com/static/member/images/2.png') no-repeat;
+	text-indent: -9999px;
+	overflow: hidden;
+	background-size: 100%;
+	margin: 9px 0 0 24px;
+}
+
+/* 头部新闻 */
+.header_News {
+	position: relative;
+	width: 250px;
+	float: right;
+	margin-top: 1px;
+	height: 40px;
+	overflow: hidden;
+	line-height: 40px;
+}
+
+.header_News p {
+	color: #eee;
+	text-align: left;
+	font-size: 12px;
+	cursor: pointer;
+	font-family: 微软雅黑, Microsoft YaHei;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.header_News ul {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.header_News ul li {
+	text-align: left;
+	height: 40px;
+	width: 250px;
+	line-height: 40px;
+}
+
+.header_News ul li i {
+	position: relative;
+	top: 2px;
+	margin-right: 6px;
+}
+
+.header_News ul li p:hover {
+	color: #ff9600;
+}
+
+/* 头部中间 */
+.header_center {
+	margin: 0 410px 0 460px;
+}
+
+.header_menu {
+	width: 630px;
+	margin: 0 auto;
+}
+
+.header_menu_list {
+	position: relative;
+	float: left;
+	margin-right: 10px;
+	width: 94px;
+	height: 40px;
+}
+
+.header_menu_list a {
+	display: inline-block;
+	width: 94px;
+}
+
+.header_menu_list a:hover {
+	background-color: #44b549;
+}
+
+.header_menu_list:hover .header_menu_list_ul {
+	height: 320px;
+}
+
+.header_menu_list_ul li:hover {
+	background-color: #44b549;
+}
+
+.header_menu_list_ul {
+	opacity: 0.8;
+	position: absolute;
+	width: 94px;
+	top: 40px;
+	background-color: #272d2f;
+	-webkit-transition: height .1s;
+	-moz-transition: height .1s;
+	-o-transition: height .1s;
+	transition: height .1s;
+	height: 0;
+	overflow: hidden;
+}
+
+/* 头部右侧 */
+.header_right {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.header_register {
+	margin-right: 60px;
+}
+
+.header_register,
+.header_split,
+.header_login {
+	float: right;
+	cursor: pointer;
+	height: 24px;
+	line-height: 24px;
+	margin-top: 8px;
+}
+
+.header_login a {
+	color: #ff9600;
+}
+
+.header_split {
+	height: 14px;
+	width: 2px;
+	background-color: #888;
+	margin-top: 13px;
+	margin: 13px 10px 0;
+}
+
+.header_login a,
+.header_register a {
+	padding: 0 8px;
+	border-radius: 4px;
+	height: 24px;
+	display: inline-block;
+}
+
+.header_login a:hover,
+.header_register a:hover {
+	background-color: #69777B;
+}
+
+/* 头部和底部主要内容 */
+.main {
+	width: 1200px;
+	background-color: #fff;
+	margin: 0 auto;
+	box-shadow: 0 0 5px #eee;
+}
+
+/* 广告顶部分类 */
+.industry_top ul {
+	width: 1100px;
+	margin: 0 auto;
+	padding-top: 10px;
+	box-sizing: border-box;
+}
+
+.industry_top ul li {
+	float: left;
+	margin: 0 10px;
+}
+
+.style_sort {
+	box-sizing: border-box;
+	padding: 0 56px;
+	height: 32px;
+	margin-top: 25px;
+}
+
+.style_sort_li {
+	width: 100px;
+	float: left;
+	margin-right: 10px;
+	text-align: center;
+	height: 32px;
+	line-height: 32px;
+	font-size: 14px;
+	border-radius: 5px;
+	letter-spacing: 1px;
+	border: 1px solid #ddd;
+	color: #333;
+}
+
+.style_sort_li:hover {
+	font-weight: 700;
+	color: #44B549;
+	border-color: #44B549;
+}
+
+.style_sort_click {
+	font-weight: 700;
+	color: #44B549;
+	border-color: #44B549;
+}
+
+.iconfont {
+	font-family: "iconfont" !important;
+	font-size: 16px;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-stroke-width: 0.2px;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.sckSecondThirdBg {
+	border-bottom: 1px solid #ddd;
+	margin-top: 25px;
+	font-size: 14px;
+}
+
+.sckSecondThird {
+	padding-top: 8px;
+}
+
+.sckSecond {
+	float: left;
+	font-size: 14px;
+	font-weight: 700;
+	height: 24px;
+	line-height: 24px;
+	width: 90px;
+	text-align: right;
+	margin-right: 10px;
+}
+
+.sckThird {
+	overflow: hidden;
+}
+
+.sckThird li {
+	float: left;
+	cursor: pointer;
+	border-radius: 3px;
+	box-sizing: border-box;
+	padding: 1px 8px;
+	margin: 1px 0 15px 8px;
+	line-height: 20px;
+	color: #666;
+}
+
+.sckThird li:hover {
+	background-color: #44b549;
+	color: #fff;
+}
+
+.style-theme {
+	margin-top: 30px;
+}
+
+.style-theme ul {
+	width: 1100px;
+	text-align: right;
+	margin: 0 auto;
+}
+
+.style-theme ul li {
+	float: left;
+	margin: 0 10px;
+}
+
+/* 排序部分 */
+.sckSort {
+	height: 36px;
+	margin-top: 20px;
+	padding: 3px 40px;
+	position: relative;
+
+}
+
+.sckSort>ul li {
+	float: left;
+	background-color: #e9e9e9;
+	padding: 0 12px;
+	letter-spacing: 1px;
+	font-size: 12px;
+	color: #666;
+	height: 26px;
+	line-height: 26px;
+	margin: 5px 10px 0 0;
+	border-radius: 3px;
+}
+
+.sckSort>ul li:hover {
+	color: #fff;
+	background-color: #44b549;
+	cursor: pointer;
+}
+
+/* 搜索部分 */
+.sckSearch {
+	position: relative;
+	margin: 0 auto;
+	width: 310px;
+	height: 34px;
+}
+
+.sckSearchBox {
+	width: 310px;
+	height: 34px;
+	position: relative;
+}
+.sckSearchBox:hover ul {
+	display: block;
+}
+
+.sckSearchBox input {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 246px;
+	height: 34px;
+	line-height: 34px;
+	box-sizing: border-box;
+	font-size: 15px;
+	border: 2px solid #44b549;
+	padding: 0px 30px 0px 10px;
+	border-radius: 3px 0px 0px 3px;
+}
+
+.sckSearchBox ul {
+	display: none;
+	position: absolute;
+	left: 2px;
+	top: 34px;
+	padding: 15px 0;
+	box-sizing: border-box;
+	z-index: 100;
+	border-radius: 0px 0px 6px 6px;
+	width: 242px;
+	background-color: #fff;
+	box-shadow: 0px 0px 8px #999;
+}
+
+.sckSearchBox ul li {
+	padding: 0 10px;
+	cursor: pointer;
+	height: 30px;
+	line-height: 30px;
+	color: #444;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.sckSearchBox ul li:hover {
+	background-color: #e6efe0;
+}
+
+
+.sckSearchBox button {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 64px;
+	height: 34px;
+	line-height: 34px;
+	background-color: #44b549;
+	color: #fff;
+	font-size: 14px;
+	border-radius: 0 3px 3px 0;
+}
+
+.sckSearchImg {
+	position: absolute;
+	right: 75px;
+	top: 7px;
+	width: 20px;
+}
+
+.sckSearchImg img {
+	width: 100%;
+	background-color: #ccc;
+	cursor: pointer;
+}
+
+.sckSearchImg img:hover {
+	background-color: #44b549;
+}
+
+
+.page_div {
+	height: 50px;
+	padding-top: 11px;
+	margin-top: 85px;
+	text-align: center;
+}
+
+.page_div ul {
+	padding: 8px 0px 0px;
+	font-size: 0px;
+	height: 40px;
+}
+
+.page_div ul li {
+	cursor: pointer;
+	background-color: #f5f5f5;
+	color: #666;
+	margin-right: 4px;
+	display: inline-block;
+	font-size: 12px;
+	border: 1px solid #ddd;
+	box-sizing: border-box;
+	border-radius: 3px;
+}
+
+.page_div ul li span {
+	padding: 4px 8px;
+	display: inline-block;
+}
+
+.page_div ul li span:hover {
+	background-color: #ddd;
+}
+
+.active {
+	cursor: default;
+	background-color: #aaa !important;
+	color: #fff !important;
+}
+
+/*底部*/
+.foot {
+	height: 170px;
+	width: 100%;
+	background: #070707;
+	padding: 20px 0 0;
+	box-sizing: border-box;
+}
+
+.foot .foot_cont {
+	width: 1200px;
+	margin: 0 auto;
+	position: relative;
+}
+
+.foot .frend_link {
+	height: 34px;
+	line-height: 34px;
+}
+
+.foot .frend_link p {
+	float: left;
+	color: #999;
+	font-size: 14px
+}
+
+.foot .frend_link .frend_link_ul li {
+	float: left;
+	margin-right: 14px
+}
+
+.foot .frend_link .frend_link_ul li a {
+	font-size: 14px;
+	color: #999
+}
+
+.foot .frend_link .frend_link_ul li:hover a {
+	color: #44b549
+}
+
+.foot .about_ul {
+	margin: 10px 0;
+	overflow: hidden;
+	height: 34px;
+	line-height: 34px;
+}
+
+.foot .about_ul li {
+	float: left;
+	margin-right: 27px
+}
+
+.foot .about_ul li a {
+	font-size: 14px;
+	color: #999
+}
+
+.foot .about_ul li:hover a {
+	color: #44b549
+}
+
+.foot .copy {
+	overflow: hidden;
+	margin: 0 auto;
+}
+
+.foot .copy li {
+	float: left;
+	margin-right: 10px;
+	color: #999;
+}
+
+.foot .copy li img {
+	width: 12px;
+	height: 12px;
+	vertical-align: middle;
+	margin-right: 6px;
+}
+
+.foot .copy li a {
+	font-size: 14px;
+	color: #999;
+}
+
+.foot .copy li:hover a {
+	color: #44b549
+}
+
+
+.foot .qr_code {
+	width: 100px;
+	height: 124px;
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	margin-top: -46px;
+}
+
+.foot .qr_code p {
+	color: #999;
+	font-size: 13px;
+	text-align: center;
+	margin-top: 8px;
+}
+
+
+
+/*素材库*/
+.sc {
+	width: 1200px;
+	margin: 0 auto;
+	font-size: 0px;
+	padding: 30px 15px 0px;
+}
+
+.sc-row {
+	display: inline-block;
+	vertical-align: top;
+	font-size: 14px;
+	padding: 0px 15px;
+	width: 360px;
+}
+
+.sc-list {
+	box-shadow: 0px 0px 3px #aaa;
+	cursor: pointer;
+	margin: 0px 0px 30px;
+	background: #f5f5f5;
+}
+
+.sc-list:hover {
+	box-shadow: 0px 0px 8px #444;
+	box-sizing: border-box;
+}
+
+.sc-cont {
+	background-color: #fff;
+	padding: 20px 10px;
+}
+
+.sc-tag {
+	font-size: 0px;
+	text-align: left;
+	padding: 10px 6px;
+}
+
+.sc-tag a {
+	display: inline-block;
+	vertical-align: middle;
+	padding: 0px 8px;
+	margin: 0px 8px 8px 0px;
+	color: #FEFEFE;
+	background-color: #828d95;
+	border-radius: 15px;
+	font-size: 12px;
+	line-height: 20px;
+}
+
+.sc-tag a:hover {
+	background-color: #4d4d4d;
+}
+
+.sc-foot {
+	height: 32px;
+	line-height: 26px;
+	padding: 0px 10px 6px;
+	color: #828d95;
+}
+
+.sc-foot .sp0 {
+	float: right;
+	color: #ff9600;
+	font-size: 16px;
+	margin-left: 10px;
+}
+
+.sc-foot .sp1 {
+	float: right;
+}
+
+.sc-foot .sp2 {
+	float: right;
+	margin-right: 10px;
+}
+
+.sc-foot .sp3 {
+	float: right;
+	margin-right: 10px;
+}
+
+.sc-foot .sp4 {
+	float: right;
+	margin-right: 10px;
+}
+
+.sc-foot .sp5 {
+	float: left;
+}
+
+.sc-foot .sp1-add {
+	float: right;
+	margin-right: 10px;
+	color: #ff9600;
+}
+
+.sc-foot .sp1 i {
+	margin-right: 3px;
+	font-size: 16px;
+}
+
+.sc-foot .sp2 i {
+	margin-right: 3px;
+	font-size: 16px;
+}
+
+.sc-foot .sp3 i {
+	margin-right: 3px;
+	font-size: 15px;
+	position: relative;
+	top: 1px;
+}
+
+.sc-foot .sp4 i {
+	margin-right: 3px;
+	font-size: 13px;
+}
+
+.sc-foot .sp1-add i {
+	margin-right: 3px;
+	font-size: 16px;
+}
+
+/*分页*/
+#sc-page {
+	text-align: center;
+}
